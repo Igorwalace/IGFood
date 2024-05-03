@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { AppFirestore } from "./contexts/banco";
 
 const poppins = Poppins({ subsets: ["latin"], weight: '400' });
 
 export const metadata: Metadata = {
-  title: "IgorFood",
+  title: "IGFood",
   description: "Projeto Igor Food",
 };
 
@@ -19,7 +20,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" href='/icon.png' />
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <AppFirestore>
+          {children}
+        </AppFirestore>
+      </body>
     </html>
   );
 }
