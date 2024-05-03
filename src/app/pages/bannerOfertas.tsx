@@ -13,7 +13,7 @@ const BannerOfertas = () => {
               <span>Com apenas alguns cliques, encontre refeições acessíveis perto de você.</span>
             </div>
             <div className='bg-white p-5 w-[658px] h-[88px] flex justify-between items-center gap-2 rounded-xl' >
-              <input type="search" className='py-3 px-4 outline-none bg-[#F4F4F5] w-full rounded-xl' placeholder='Buscar restaurantes' />
+              <input type="text" className='py-3 px-4 outline-none bg-[#F4F4F5] w-full rounded-xl text-black' placeholder='Buscar restaurantes' />
               <span className='p-[10px] bg-[#FFB100] rounded-md' ><CiSearch /></span> 
             </div>
           </div>
