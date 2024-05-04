@@ -16,7 +16,7 @@ import Button_Back from "../../componentes/button-back";
 import { FaArrowDown, FaMotorcycle } from "react-icons/fa";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { PiTimer } from "react-icons/pi";
-import DeliveryTime_And_DeliveyFree from "../../componentes/deliveryFreeAndDeliver-timer";
+import DeliveryTime_And_DeliveyFree from "../../componentes/deliveryFreeAndDelivery-timer";
 
 interface ProductSingle {
     params: {

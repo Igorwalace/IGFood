@@ -2,7 +2,7 @@
 
 //pages
 import Header from '../../header'
-import DeliveryTime_And_DeliveyFree from '../../componentes/deliveryFreeAndDeliver-timer'
+import DeliveryTime_And_DeliveyFree from '../../componentes/deliveryFreeAndDelivery-timer'
 import Button_Back from '../../componentes/button-back'
 
 //react
