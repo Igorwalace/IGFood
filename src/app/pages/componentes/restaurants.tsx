@@ -23,7 +23,7 @@ const Restaurants = () => {
                         .map((restaurants: any, index: any) => (
                             <div key={index}>
                                 <div className="flex flex-col items-start justify-center gap-2">
-                                    <div className='md:w-[381px] md:h-[165px] w-[136px] h-[266px] relative'>
+                                    <div className='md:w-[381px] md:h-[165px] w-[266px] h-[136px] relative'>
                                         <Image
                                             src={restaurants.imageUrl}
                                             alt={restaurants.name}
