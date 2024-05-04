@@ -78,7 +78,7 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                 {/* products recomendados */}
                 <div className='md:my-5 md:p-0 px-5' >
                   <>
-                    <PedidosRecomendadosTitle title={`Na hora do almoço`} isVerTudo={false} />
+                    <PedidosRecomendadosTitle title={restaurant.category} isVerTudo={false} />
                   </>
                   <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
                     {
