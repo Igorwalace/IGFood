@@ -30,7 +30,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                 {firestoreProducts
                     .filter((product: any) => product.id === id)
                     .map((product: any, index: any) => (
-                        <div key={index} className="md:flex items-center justify-between gap-10" >
+                        <div key={index} className="md:flex items-center justify-between gap-10 h-full" >
                             {/* image */}
                             <div className="flex items-center justify-center" >
                                 <Image
@@ -38,7 +38,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                     alt={product.name}
                                     width={400}
                                     height={400}
-                                    className="md:w-[600px] md:h-[500px] w-full h-full md:rounded-xl"
+                                    className="md:w-[600px] md:h-[500px] w-full h- md:rounded-xl"
                                 />
                             </div>
 
