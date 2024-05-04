@@ -41,7 +41,7 @@ const Products = () => {
                                     }
                                 </div>
                                 <div className='text-[#323232] px-1' >
-                                    <h1 className='font-light md:text-base text-sm' >{product.name}</h1>
+                                    <h1 className='font-light md:text-base text-sm whitespace-nowrap' >{product.name}</h1>
                                     <div className='flex items-center justify-start gap-2'>
                                         <h1 className='flex items-center font-extrabold md:text-base text-sm whitespace-nowrap'>
                                             R$ {Discount(product.price, product.discount).toFixed(2).replace('.', ',')}
