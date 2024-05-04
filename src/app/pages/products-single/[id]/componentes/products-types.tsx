@@ -14,11 +14,11 @@ const Products_Type = () => {
 
     return (
         <>
+            <PedidosRecomendadosTitle />
             <main>
                 <div>
-                    <PedidosRecomendadosTitle />
                 </div>
-                
+
             </main>
         </>
     )

@@ -8,7 +8,12 @@ import Image from "next/image";
 
 //contexts
 import useAppContextFirestore from "@/app/contexts/banco";
+
+//pages
 import Discount from "../../componentes/discount";
+import Products_Type from "./componentes/products-types";
+
+//icons
 import { FaArrowDown, FaMotorcycle } from "react-icons/fa";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { PiTimer } from "react-icons/pi";
@@ -31,7 +36,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                     .filter((product: any) => product.id === id)
                     .map((product: any, index: any) => (
                         <div key={index} >
-                            <div className="md:flex items-center justify-between gap-10 h-full mb-5" >
+                            <div className="md:flex items-center justify-between gap-10 mb-5" >
                                 {/* image */}
                                 <div className="flex items-center justify-center" >
                                     <Image
@@ -39,7 +44,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                         alt={product.name}
                                         width={400}
                                         height={400}
-                                        className="md:w-[600px] md:h-[500px] w-full h- md:rounded-xl"
+                                        className={`md:w-[600px] md:h-[500px] w-full md:rounded-xl ${product.category == 'bebida' && 'border-[2px] border-[#121b37]'}`}
                                     />
                                 </div>
 
@@ -105,6 +110,9 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                             </div>
                                         ))}
                                 </div>
+                            </div>
+                            <div className="md:p-0 py-5 px-10" >
+                                <Products_Type />
                             </div>
                         </div>
                     ))}

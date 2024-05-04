@@ -15,9 +15,9 @@ const Products = () => {
                         .filter((product: any) => product.category != 'bebida')
                         .slice(0, 6)
                         .map((product: any, index:any) => (
-                            <>
+                            <div key={index} >
                                 <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
-                            </>
+                            </div>
                         ))}
                 </div>
             </main>
