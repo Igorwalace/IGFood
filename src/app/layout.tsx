@@ -1,7 +1,15 @@
+//react
 import type { Metadata } from "next";
+
+//fonts
 import { Poppins } from "next/font/google";
+
+//css
 import "./globals.css";
+
+//contexts
 import { AppFirestore } from "./contexts/banco";
+import { AppCarrinho } from "./contexts/carrinho";
 
 const poppins = Poppins({ subsets: ["latin"], weight: '400' });
 
@@ -22,7 +30,9 @@ export default function RootLayout({
       </head>
       <body className={poppins.className}>
         <AppFirestore>
+          <AppCarrinho>
           {children}
+          </AppCarrinho>
         </AppFirestore>
       </body>
     </html>

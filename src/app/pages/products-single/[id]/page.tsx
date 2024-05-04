@@ -17,6 +17,7 @@ import { FaArrowDown, FaMotorcycle } from "react-icons/fa";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { PiTimer } from "react-icons/pi";
 import DeliveryTime_And_DeliveyFree from "../../componentes/deliveryFreeAndDelivery-timer";
+import Add_Sacola from "./componentes/add_sacola";
 
 interface ProductSingle {
     params: {
@@ -48,7 +49,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                 </div>
 
                                 {/* informações do produto */}
-                                <div className="bg-white z-10 md:static relative -top-[35px] md:p-10 md:py-5 pt-5 px-10 md:w-[452px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
+                                <div className="bg-white z-10 md:static relative -top-[35px] md:p-10 md:py-5 pt-5 px-5 md:w-[452px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
                                     {firestoreRestaurant
                                         .filter((restaurant: any) => restaurant.id === product.restaurantId)
                                         .map((restaurant: any, index: any) => (
@@ -101,9 +102,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                     <p className="md:text-sm text-xs text-[#7E8392] text-justify" >{product.about}</p>
                                                 </div>
 
-                                                <div className="flex justify-center items-center mt-5" >
-                                                    <button className="bg-[var(--red)] py-3 text-white rounded-xl w-full hover:scale-105 duration-200" >Adicionar na sacola</button>
-                                                </div>
+                                                <Add_Sacola />
 
                                             </div>
                                         ))}
