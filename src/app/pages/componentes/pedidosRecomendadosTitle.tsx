@@ -3,7 +3,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 
 interface title {
     title: any
-    isVerTudo: boolean
+    isVerTudo: any
 }
 
 const PedidosRecomendadosTitle = ({ title, isVerTudo }: title) => {
