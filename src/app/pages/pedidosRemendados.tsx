@@ -9,7 +9,7 @@ const PedidosRecomendados = () => {
     return (
         <>
             <main>
-                <PedidosRecomendadosTitle />
+                <PedidosRecomendadosTitle title={'Pedidos Recomendados'} isVerTudo={true} />
                 <div>
                     <Products />
                 </div>
