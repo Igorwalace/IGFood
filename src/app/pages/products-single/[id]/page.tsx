@@ -94,7 +94,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                 </div>
 
                                                 <>
-                                                        <DeliveryTime_And_DeliveyFree restaurant={restaurant} />
+                                                    <DeliveryTime_And_DeliveyFree restaurant={restaurant} />
                                                 </>
 
                                                 <div className="flex flex-col justify-center items-start gap-3" >
@@ -102,13 +102,13 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                     <p className="md:text-sm text-xs text-[#7E8392] text-justify" >{product.about}</p>
                                                 </div>
 
-                                                <Add_Sacola />
+                                                <Add_Sacola product={product} />
 
                                             </div>
                                         ))}
                                 </div>
                             </div>
-                            <div className="md:p-0 md:py-5 px-10" >
+                            <div className="md:p-0 md:py-5 px-5" >
                                 <Products_Type />
                             </div>
                         </div>
