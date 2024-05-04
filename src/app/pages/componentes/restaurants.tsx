@@ -4,6 +4,7 @@ import useAppContextFirestore from '@/app/contexts/banco'
 
 //react
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 //icons
@@ -21,7 +22,7 @@ const Restaurants = () => {
                     {firestoreRestaurant
                         .slice(0, 6)
                         .map((restaurants: any, index: any) => (
-                            <div key={index}>
+                            <Link href={`pages/restaurantsSingle/${restaurants.id}`} key={index} className='hover:scale-95 duration-200' >
                                 <div className="flex flex-col items-start justify-center gap-2">
                                     <div className='md:w-[381px] md:h-[165px] w-[266px] h-[136px] relative'>
                                         <Image
@@ -53,7 +54,7 @@ const Restaurants = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                 </div>
             </main>

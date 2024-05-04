@@ -49,7 +49,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                         alt={product.name}
                                         width={400}
                                         height={400}
-                                        className={`md:w-[700px] md:h-[500px] w-full md:rounded-xl ${product.category == 'bebida' && 'border-[2px] border-[#121b37]'}`}
+                                        className={`md:w-[700px] md:h-[500px] w-full md:rounded-xl`}
                                     />
                                 </div>
 
@@ -120,7 +120,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                 </div>
 
                                                 <div className="flex justify-center items-center my-5" >
-                                                    <button className="bg-[var(--red)] py-3 text-white rounded-xl w-full" >Adicionar na sacola</button>
+                                                    <button className="bg-[var(--red)] py-3 text-white rounded-xl w-full hover:scale-105 duration-200" >Adicionar na sacola</button>
                                                 </div>
 
                                             </div>
