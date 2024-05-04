@@ -1,8 +1,5 @@
 'use client'
 
-//Pages
-import Header_fixo from "../../componentes/header-fixo";
-
 //react
 import Image from "next/image";
 
@@ -12,14 +9,13 @@ import useAppContextFirestore from "@/app/contexts/banco";
 //pages
 import Discount from "../../componentes/discount";
 import Products_Type from "./componentes/products-types";
+import Header from "../../header";
+import Button_Back from "../../componentes/button-back";
 
 //icons
 import { FaArrowDown, FaMotorcycle } from "react-icons/fa";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { PiTimer } from "react-icons/pi";
-import Header from "../../header";
-import { IoIosArrowBack } from "react-icons/io";
-import { useRouter } from "next/navigation";
 
 interface ProductSingle {
     params: {
@@ -28,9 +24,6 @@ interface ProductSingle {
 }
 
 const Page = ({ params: { id } }: ProductSingle) => {
-
-    const router = useRouter()
-
     const { firestoreProducts, firestoreRestaurant } = useAppContextFirestore()
 
     return (
@@ -41,7 +34,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                     .filter((product: any) => product.id === id)
                     .map((product: any, index: any) => (
                         <div key={index} >
-                            <div className="md:flex items-center justify-between gap-10 mb-5" >
+                            <div className="md:flex items-center justify-between gap-10 md:mb-5" >
                                 {/* image */}
                                 <div className="flex items-center justify-center" >
                                     <Image
@@ -54,7 +47,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                 </div>
 
                                 {/* informações do produto */}
-                                <div className="bg-white z-10 md:static relative -top-[35px] md:p-10 py-5 px-10 md:w-[552px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
+                                <div className="bg-white z-10 md:static relative -top-[35px] md:p-10 md:py-5 pt-5 px-10 md:w-[552px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
                                     {firestoreRestaurant
                                         .filter((restaurant: any) => restaurant.id === product.restaurantId)
                                         .map((restaurant: any, index: any) => (
@@ -119,7 +112,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                     <p className="md:text-sm text-xs text-[#7E8392] text-justify" >{product.about}</p>
                                                 </div>
 
-                                                <div className="flex justify-center items-center my-5" >
+                                                <div className="flex justify-center items-center mt-5" >
                                                     <button className="bg-[var(--red)] py-3 text-white rounded-xl w-full hover:scale-105 duration-200" >Adicionar na sacola</button>
                                                 </div>
 
@@ -127,15 +120,15 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                         ))}
                                 </div>
                             </div>
-                            <div className="md:p-0 py-5 px-10" >
+                            <div className="md:p-0 md:py-5 px-10" >
                                 <Products_Type />
                             </div>
                         </div>
                     ))}
             </main>
-            <div className="md:hidden absolute top-4 left-4" >
-                <button className="bg-white p-3 rounded-xl hover:scale-105 duration-200" onClick={()=>{router.back()}} ><IoIosArrowBack /></button>
-            </div>
+            <>
+                <Button_Back />
+            </>
         </>
     )
 }

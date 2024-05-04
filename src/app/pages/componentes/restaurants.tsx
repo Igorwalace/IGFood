@@ -5,7 +5,6 @@ import useAppContextFirestore from '@/app/contexts/banco'
 //react
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 
 //icons
 import { FaMotorcycle } from 'react-icons/fa'
