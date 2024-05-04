@@ -2,7 +2,11 @@ import React from 'react'
 import { FaMotorcycle } from 'react-icons/fa'
 import { PiTimer } from 'react-icons/pi'
 
-const DeliveryTime_And_DeliveyFree = (restaurant:any) => {
+interface Props {
+    restaurant: any
+}
+
+const DeliveryTime_And_DeliveyFree = ({restaurant}: Props) => {
     return (
         <>
             <div className="my-5 flex items-center justify-between px-12 py-2 rounded-full border-[1px] border-[#EEEEEE]" >

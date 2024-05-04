@@ -16,7 +16,7 @@ const Products_Type = () => {
         <>
             <main>
                 <div>
-                    <PedidosRecomendadosTitle />
+                    <PedidosRecomendadosTitle title={`Pedidos Recomendados`} isVerTudo={false} />
                 </div>
                 <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide'>
                     {firestoreProducts.map((product: any, index: any) => (

@@ -16,6 +16,7 @@ import Button_Back from "../../componentes/button-back";
 import { FaArrowDown, FaMotorcycle } from "react-icons/fa";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { PiTimer } from "react-icons/pi";
+import DeliveryTime_And_DeliveyFree from "../../componentes/deliveryFreeAndDeliver-timer";
 
 interface ProductSingle {
     params: {
@@ -91,21 +92,9 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                     </div>
                                                 </div>
 
-                                                <div className="my-5 flex items-center justify-between px-12 py-2 rounded-full border-[1px] border-[#EEEEEE]" >
-                                                    <div>
-                                                        <div className="flex items-center gap-1 text-[#7E8392] md:text-sm text-xs" >
-                                                            <span>Entrega </span>
-                                                            <span><FaMotorcycle /></span>
-                                                        </div>
-                                                        {restaurant.deliveryTotal == 'Grátis' ? <span className="md:text-sm text-xs" >{restaurant.deliveryTotal}</span> : <span className="md:text-sm text-xs" >R$ {restaurant.deliveryTotal}</span>}
-                                                    </div>
-                                                    <div>
-                                                        <div className="flex items-center text-[#7E8392] md:text-sm text-xs" >
-                                                            <span>Entrega </span><span><PiTimer /></span>
-                                                        </div>
-                                                        <span className="md:text-sm text-xs" >{restaurant.deliveryTime}min</span>
-                                                    </div>
-                                                </div>
+                                                <>
+                                                        <DeliveryTime_And_DeliveyFree restaurant={restaurant} />
+                                                </>
 
                                                 <div className="flex flex-col justify-center items-start gap-3" >
                                                     <h1 className="md:text-base text-sm" >Sobre</h1>

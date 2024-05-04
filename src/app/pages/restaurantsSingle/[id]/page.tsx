@@ -76,19 +76,41 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                 </div>
 
                 {/* products recomendados */}
-                <div className='my-5' >
+                <div className='md:my-5 md:p-0 px-5' >
                   <>
-                    <PedidosRecomendadosTitle />
+                    <PedidosRecomendadosTitle title={`Na hora do almoço`} isVerTudo={false} />
                   </>
                   <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
                     {
                       firestoreProducts
+                        .filter((product: any) => product.restaurantId == id)
+                        .filter((bebida:any)=>bebida.category != 'bebida')
                         .map((product: any, index: any) => (
                           <div key={index} >
                             <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
                           </div>
                         ))
                     }
+                  </div>
+                  <div className='my-5' >
+                    <>
+                      <PedidosRecomendadosTitle title={'Bebidas'} isVerTudo={false} />
+                    </>
+                    <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
+                      {
+                        firestoreProducts
+                          .filter((product: any) => product.restaurantId == id)
+                          .filter((bebida:any)=>bebida.category == 'bebida')
+                          .map((product: any, index: any) => (
+                            <div key={index} >
+                              <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
+                            </div>
+                          ))
+                      }
+                    </div>
+                  </div>
+                  <div>
+
                   </div>
                 </div>
 
