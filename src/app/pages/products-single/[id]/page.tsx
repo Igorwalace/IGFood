@@ -43,7 +43,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                             </div>
 
                             {/* informações do produto */}
-                            <div className="bg-white z-10 md:static relative -top-20 p-10 md:w-[552px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
+                            <div className="bg-white z-10 md:static relative -top-[35px] md:p-10 py-5 px-10 md:w-[552px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
                                 {firestoreRestaurant
                                     .filter((restaurant: any) => restaurant.id === product.restaurantId)
                                     .map((restaurant: any, index: any) => (
