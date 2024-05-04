@@ -1,18 +1,15 @@
 import React from 'react'
+
+//pages
 import Products from './componentes/products'
-import { IoIosArrowForward } from 'react-icons/io'
+import PedidosRecomendadosTitle from './componentes/pedidosRecomendadosTitle'
 
 const PedidosRecomendados = () => {
 
     return (
         <>
             <main>
-                <div className='flex items-center justify-between mb-5' >
-                    <h1 className='text-[#323232] md:text-lg text-base' >Pedidos Recomendados</h1>
-                    <span className='text-[var(--red)] md:text-sm text-xs font-medium cursor-pointer flex items-center justify-center gap-2' >Ver Todos
-                        <span><IoIosArrowForward /></span>
-                    </span>
-                </div>
+                <PedidosRecomendadosTitle />
                 <div>
                     <Products />
                 </div>
