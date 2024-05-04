@@ -14,11 +14,17 @@ const Products_Type = () => {
 
     return (
         <>
-            <PedidosRecomendadosTitle />
             <main>
                 <div>
+                    <PedidosRecomendadosTitle />
                 </div>
-
+                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide'>
+                    {firestoreProducts.map((product: any, index: any) => (
+                        <div key={index} >
+                            <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
+                        </div>
+                    ))}
+                </div>
             </main>
         </>
     )
