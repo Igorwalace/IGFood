@@ -30,7 +30,7 @@ const Restaurants = () => {
                                             height={500}
                                             width={500}
                                             style={{ objectFit: 'cover' }}
-                                            className='md:w-[381px] md:h-[165px] w-[136px] h-[266px] rounded-xl'
+                                            className='md:w-[381px] md:h-[165px] w-[266px] h-[136px] rounded-xl'
                                         />
                                     </div>
                                     <div className='text-[#323232] px-1' >
