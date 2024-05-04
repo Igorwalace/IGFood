@@ -30,7 +30,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                 {firestoreProducts
                     .filter((product: any) => product.id === id)
                     .map((product: any, index: any) => (
-                        <div key={index} className="flex flex-col md:flex-row items-center justify-between gap-10" >
+                        <div key={index} className="md:flex items-center justify-between gap-10" >
                             {/* image */}
                             <div className="flex items-center justify-center" >
                                 <Image
@@ -43,7 +43,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                             </div>
 
                             {/* informações do produto */}
-                            <div className="-mt-[65px] bg-white p-10 md:w-[552px] md:h-[507px] w-full rounded-3xl md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
+                            <div className="bg-white z-10 relative -top-20 p-10 md:w-[552px] md:h-[507px] w-full rounded-t-[40px] md:rounded-xl md:border-[1px] md:border-[#EEEEEE]">
                                 {firestoreRestaurant
                                     .filter((restaurant: any) => restaurant.id === product.restaurantId)
                                     .map((restaurant: any, index: any) => (
