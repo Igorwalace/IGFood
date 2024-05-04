@@ -18,6 +18,7 @@ import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { PiTimer } from "react-icons/pi";
 import DeliveryTime_And_DeliveyFree from "../../componentes/deliveryFreeAndDelivery-timer";
 import Add_Sacola from "./componentes/add_sacola";
+import { useState } from "react";
 
 interface ProductSingle {
     params: {
@@ -26,7 +27,16 @@ interface ProductSingle {
 }
 
 const Page = ({ params: { id } }: ProductSingle) => {
+    const [quanty, setQuanty] = useState(1)
     const { firestoreProducts, firestoreRestaurant } = useAppContextFirestore()
+
+    const handleMoreQuanty = () => {
+        setQuanty(quanty + 1)
+    }
+    const handleAnyLessQuanty = () => {
+        if(quanty == 1) return
+        setQuanty(quanty - 1)
+    }
 
     return (
         <>
@@ -87,9 +97,9 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                         }
                                                     </div>
                                                     <div className="flex items-center gap-3" >
-                                                        <div className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" ><IoRemoveOutline /></div>
-                                                        <span>1</span>
-                                                        <div className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" ><IoAddOutline /></div>
+                                                        <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" onClick={handleAnyLessQuanty} ><IoRemoveOutline /></button>
+                                                        <span>{quanty}</span>
+                                                        <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" onClick={handleMoreQuanty} ><IoAddOutline /></button>
                                                     </div>
                                                 </div>
 
