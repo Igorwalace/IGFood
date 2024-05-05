@@ -1,16 +1,22 @@
 'use client'
 import { createContext, useContext, useEffect, useState } from "react"
+import safeLocalStorage from "../helps/local_storage";
 
 export const AppContext = createContext<any>(undefined);
 
 export function AppCarrinho({ children }: {
     children: React.ReactNode;
 }) {
-    const [productCarrinho, setProductCarrinho] = useState<any[]>([])
+
+    const [productCarrinho, setProductCarrinho] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("cart-products") || "[]"),)
     const [subTotal, setSubTotal] = useState(0)
     const [discount, setDiscount] = useState(0)
     const [total, setTotal] = useState(0)
     const [quantyCurrent, setQuantyCurrent] = useState(0)
+
+    useEffect(() => {
+        safeLocalStorage()?.setItem("cart-products", JSON.stringify(productCarrinho));
+    }, [productCarrinho]);
 
     return (
         <AppContext.Provider value={{ setProductCarrinho, productCarrinho, setTotal, total, setDiscount, discount, subTotal, setSubTotal, setQuantyCurrent, quantyCurrent }} >
