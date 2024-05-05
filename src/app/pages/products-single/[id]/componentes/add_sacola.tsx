@@ -72,8 +72,8 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                         <SheetTitle>Sacola</SheetTitle>
                                         <div className="flex items-center gap-3 flex-wrap overflow-auto" >
                                             {
-                                                productCarrinho.map((product: any) => (
-                                                    <div key={product.product.id} >
+                                                productCarrinho.map((product: any, index:any) => (
+                                                    <div key={index} >
                                                         <div className="flex items-center gap-3">
                                                             <div className="w-[150px] h-[120px]" >
                                                                 <Image
