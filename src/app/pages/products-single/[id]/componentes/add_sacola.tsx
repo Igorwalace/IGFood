@@ -67,7 +67,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                 <SheetTrigger className="bg-[var(--red)] rounded-lg py-2 px-3 text-white hover:scale-105 duration-200" >
                                     Ver Sacola
                                 </SheetTrigger>
-                                <SheetContent side='bottom' className="h-[80vh]" >
+                                <SheetContent side='bottom' className="h-[80vh] overflow-y-auto rounded-xl" >
                                     <SheetHeader>
                                         <SheetTitle>Sacola</SheetTitle>
                                         <div className="flex items-center gap-3 flex-wrap overflow-auto" >
