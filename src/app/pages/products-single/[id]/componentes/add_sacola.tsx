@@ -2,7 +2,21 @@
 
 //contexts
 import useAppCarrinho from "@/app/contexts/carrinho"
-import { useEffect } from "react"
+
+//react
+import { useEffect, useState } from "react"
+
+//shadcn
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import Image from "next/image"
+import { IoAddOutline, IoRemoveOutline } from "react-icons/io5"
 
 interface Product {
     product: any
@@ -11,6 +25,7 @@ interface Product {
 
 const Add_Sacola = ({ product, quanty }: Product) => {
     const { setProductCarrinho, productCarrinho, setTotal, setSubTotal, setDiscount, discount, total, subTotal, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
+    const [att, setAtt] = useState([])
 
     useEffect(() => {
         const total = productCarrinho.reduce((accumulator: any, productCarrinho: any) => accumulator + parseFloat(productCarrinho.product.price) - (parseFloat(productCarrinho.product.price) * productCarrinho.product.discount / 100 * productCarrinho.quanty), 0);
@@ -21,9 +36,10 @@ const Add_Sacola = ({ product, quanty }: Product) => {
         setSubTotal(subTotal)
         setDiscount(discount)
         setQuantyCurrent(quantyProduct)
+
     }, [total, discount, subTotal, productCarrinho, setTotal, setSubTotal, setDiscount, setQuantyCurrent]);
 
-    const handleAddProductCart = () => {
+    const handleAddProductCart = async () => {
         const updatedArray = [...productCarrinho, { product, quanty }];
         setProductCarrinho(updatedArray)
     };
@@ -47,7 +63,47 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                     <span className="md:text-sm text-xs text-[#7E8392] ">{quantyCurrent} {quantyCurrent == 0 ? 'item' : 'itens'}</span>
                                 </div>
                             </div>
-                            <button className="bg-[var(--red)] rounded-lg py-2 px-3 text-white hover:scale-105 duration-200" >Ver Sacola</button>
+                            <Sheet>
+                                <SheetTrigger className="bg-[var(--red)] rounded-lg py-2 px-3 text-white hover:scale-105 duration-200" >
+                                    Ver Sacola
+                                </SheetTrigger>
+                                <SheetContent side='bottom' className="h-[80vh]" >
+                                    <SheetHeader>
+                                        <SheetTitle>Sacola</SheetTitle>
+                                        <div className="flex items-center gap-3 flex-wrap overflow-auto" >
+                                            {
+                                                productCarrinho.map((product: any) => (
+                                                    <div key={product.product.id} >
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="w-[150px] h-[120px]" >
+                                                                <Image
+                                                                    src={product.product.imageUrl}
+                                                                    alt={product.product.name}
+                                                                    width={400}
+                                                                    height={400}
+                                                                    className='w-full h-full rounded-xl'
+                                                                />
+                                                            </div>
+                                                            <div className="flex justify-center flex-col gap-2">
+                                                                <h1 className='md:text-sm text-xs' >{product.product.name}</h1>
+                                                                <div className='flex items-center gap-1' >
+                                                                    <span className="md:text-base text-sm font-extrabold" >R$ {total}</span>
+                                                                    <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {subTotal}</span>
+                                                                </div>
+                                                                <div className="flex items-center gap-3" >
+                                                                    <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" ><IoRemoveOutline /></button>
+                                                                    <span>{product.quanty}</span>
+                                                                    <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" ><IoAddOutline /></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    </SheetHeader>
+                                </SheetContent>
+                            </Sheet>
                         </div>
                     </div>
                 </div>
