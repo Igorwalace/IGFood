@@ -38,7 +38,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 productCarrinho.length > 0 &&
                 <div className="fixed bottom-0 left-0 right-0 bg-white md:px-[128px] px-5 py-2" >
                     <div className="relative" >
-                        <div className="flex items-center justify-start gap-4" >
+                        <div className="flex items-center md:justify-start justify-between gap-4" >
                             <div className="flex items-center flex-col" >
                                 <span className="text-[#7E8392] md:text-sm text-xs" >Total sem entrega</span>
                                 <div className="" >
