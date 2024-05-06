@@ -4,7 +4,7 @@
 import useAppCarrinho from "@/app/contexts/carrinho"
 
 //react
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 
 //shadcn
 import {
@@ -24,25 +24,19 @@ interface Product {
 }
 
 const Add_Sacola = ({ product, quanty }: Product) => {
-    const { setProductCarrinho, productCarrinho, setTotal, setSubTotal, setDiscount, discount, total, subTotal, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
-    const [att, setAtt] = useState([])
+    const { setProductCarrinho, productCarrinho, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
 
+    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty, 0);
+    const totalQuantyBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.quanty), 0);
+    setQuantyCurrent(totalQuantyBag)
     useEffect(() => {
-        const total = productCarrinho.reduce((accumulator: any, productCarrinho: any) => accumulator + parseFloat(productCarrinho.product.price) - (parseFloat(productCarrinho.product.price) * productCarrinho.product.discount / 100 * productCarrinho.quanty), 0);
-        const discount = productCarrinho.reduce((accumalator: any, productCarrinho: any) => accumalator + (parseFloat(productCarrinho.product.price) * productCarrinho.product.discount / 100 * productCarrinho.quanty), 0)
-        const subTotal = productCarrinho.reduce((accumalator: any, productCarrinho: any) => accumalator + (parseFloat(productCarrinho.product.price) * productCarrinho.quanty), 0)
-        const quantyProduct = productCarrinho.reduce((accumalator: any, quantyCurrent: any) => accumalator + quantyCurrent.quanty, 0)
-        setTotal(total)
-        setSubTotal(subTotal)
-        setDiscount(discount)
-        setQuantyCurrent(quantyProduct)
-
-    }, [total, discount, subTotal, productCarrinho, setTotal, setSubTotal, setDiscount, setQuantyCurrent]);
+        console.log(productCarrinho)
+    }, [productCarrinho])
 
     const handleAddProductCart = async () => {
-        const updatedArray = [...productCarrinho, { product, quanty }];
-        setProductCarrinho(updatedArray)
-    };
+        await setProductCarrinho((prevState: any) => ([...prevState, { product, quanty }]));
+    }
+
 
     return (
         <>
@@ -58,7 +52,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                             <div className="flex items-center flex-col" >
                                 <span className="text-[#7E8392] md:text-sm text-xs" >Total sem entrega</span>
                                 <div className="" >
-                                    <span className="md:text-lg text-base font-extrabold">R$ {total.toFixed(2).replace('.', ',')}</span>
+                                    <span className="md:text-lg text-base font-extrabold" onClick={() => { setProductCarrinho([]) }} >R$ {totalPriceBag.toFixed(2).replace('.', ',')}</span>
                                     <span className="md:text-xs text-[10px] text-[#7E8392] " > / </span>
                                     <span className="md:text-sm text-xs text-[#7E8392] ">{quantyCurrent} {quantyCurrent == 0 ? 'item' : 'itens'}</span>
                                 </div>
@@ -67,12 +61,12 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                 <SheetTrigger className="bg-[var(--red)] rounded-lg py-2 px-3 text-white hover:scale-105 duration-200" >
                                     Ver Sacola
                                 </SheetTrigger>
-                                <SheetContent side='bottom' className="h-[80vh] overflow-y-auto rounded-xl" >
+                                <SheetContent side='bottom' className="h-[80vh] overflow-y-auto scrollbar-hide rounded-xl" >
                                     <SheetHeader>
                                         <SheetTitle>Sacola</SheetTitle>
-                                        <div className="flex items-center gap-3 flex-wrap overflow-auto" >
-                                            {
-                                                productCarrinho.map((product: any, index:any) => (
+                                        <div className="flex items-center gap-3 flex-wrap" >
+                                            {/* {
+                                                productCarrinho.map((product: any, index: any) => (
                                                     <div key={index} >
                                                         <div className="flex items-center gap-3">
                                                             <div className="w-[150px] h-[120px]" >
@@ -87,8 +81,8 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                                             <div className="flex justify-center flex-col gap-2">
                                                                 <h1 className='md:text-sm text-xs' >{product.product.name}</h1>
                                                                 <div className='flex items-center gap-1' >
-                                                                    <span className="md:text-base text-sm font-extrabold" >R$ {total}</span>
-                                                                    <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {subTotal}</span>
+                                                                    <span className="md:text-base text-sm font-extrabold" >R$ {product.att.total}</span>
+                                                                    <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ sem valor</span>
                                                                 </div>
                                                                 <div className="flex items-center gap-3" >
                                                                     <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" ><IoRemoveOutline /></button>
@@ -99,7 +93,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                                         </div>
                                                     </div>
                                                 ))
-                                            }
+                                            } */}
                                         </div>
                                     </SheetHeader>
                                 </SheetContent>

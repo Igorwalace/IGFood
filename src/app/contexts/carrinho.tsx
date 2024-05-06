@@ -9,9 +9,7 @@ export function AppCarrinho({ children }: {
 }) {
 
     const [productCarrinho, setProductCarrinho] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("cart-products") || "[]"),)
-    const [subTotal, setSubTotal] = useState(0)
-    const [discount, setDiscount] = useState(0)
-    const [total, setTotal] = useState(0)
+    // const [productCarrinho, setProductCarrinho] = useState<any[]>([])
     const [quantyCurrent, setQuantyCurrent] = useState(0)
 
     useEffect(() => {
@@ -19,7 +17,7 @@ export function AppCarrinho({ children }: {
     }, [productCarrinho]);
 
     return (
-        <AppContext.Provider value={{ setProductCarrinho, productCarrinho, setTotal, total, setDiscount, discount, subTotal, setSubTotal, setQuantyCurrent, quantyCurrent }} >
+        <AppContext.Provider value={{ setProductCarrinho, productCarrinho, setQuantyCurrent, quantyCurrent }} >
             {children}
         </AppContext.Provider>
     )
