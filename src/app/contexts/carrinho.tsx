@@ -8,13 +8,13 @@ export function AppCarrinho({ children }: {
     children: React.ReactNode;
 }) {
 
-    // const [productCarrinho, setProductCarrinho] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("cart-products") || "[]"),)
-    const [productCarrinho, setProductCarrinho] = useState<any[]>([])
+    const [productCarrinho, setProductCarrinho] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("cart-products") || "[]"),)
+    // const [productCarrinho, setProductCarrinho] = useState<any[]>([])
     const [quantyCurrent, setQuantyCurrent] = useState(0)
 
-    // useEffect(() => {
-    //     safeLocalStorage()?.setItem("cart-products", JSON.stringify(productCarrinho));
-    // }, [productCarrinho]);
+    useEffect(() => {
+        safeLocalStorage()?.setItem("cart-products", JSON.stringify(productCarrinho));
+    }, [productCarrinho]);
 
     return (
         <AppContext.Provider value={{ setProductCarrinho, productCarrinho, setQuantyCurrent, quantyCurrent }} >
