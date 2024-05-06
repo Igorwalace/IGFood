@@ -10,11 +10,11 @@ import React from 'react'
 
 const Products_Type = () => {
 
-    const { firestoreProducts, firestoreRestaurant } = useAppContextFirestore()
+    const { firestoreProducts, firestoreRestaurant, quantyCurrent } = useAppContextFirestore()
 
     return (
         <>
-            <main>
+            <main className={`${quantyCurrent == 0 ? 'pb-0' : 'pb-12'}`} >
                 <div>
                     <PedidosRecomendadosTitle title={`Pedidos Recomendados`} isVerTudo={false} />
                 </div>

@@ -39,12 +39,18 @@ const Add_Sacola = ({ product, quanty }: Product) => {
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
-        const sameProduct = productCarrinho.find((sameProduct: any) => sameProduct.product.id == product.id)
+        const sameProduct = productCarrinho.find((sameProduct: any) => sameProduct.product.id === product.id)
+        
         if (sameProduct) {
-            const updatedCarrinhoProduct = productCarrinho.map((item: any, index:any) =>
+            const updatedCarrinhoProduct = productCarrinho.map((item: any) =>
                 item.product.id === product.id ? { ...item, quanty: item.quanty + quanty } : item
             );
             setProductCarrinho(updatedCarrinhoProduct)
+            return
+        }
+        const sameRestaurant = productCarrinho.find((sameRestaurant: any) => sameRestaurant.product.restaurantId != product.restaurantId)
+        if(sameRestaurant){
+            alert('So produtos do mesmo restaurantea')
             return
         }
         setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
