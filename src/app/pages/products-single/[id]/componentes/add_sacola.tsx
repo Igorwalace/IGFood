@@ -126,11 +126,11 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                                                 <>
                                                                     {
                                                                         restaurant.deliveryTotal != 'Grátis' ?
-                                                                            <span className='md:text-sm text-xs' >
+                                                                            <span className='md:text-sm text-xs text-[var(--red)]' >
                                                                                 R$ {restaurant.deliveryTotal}
                                                                             </span>
                                                                             :
-                                                                            <span key={index} className='md:text-sm text-xs' >
+                                                                            <span key={index} className='md:text-sm text-xs text-[var(--red)]' >
                                                                                 {restaurant.deliveryTotal}
                                                                             </span>
                                                                     }
