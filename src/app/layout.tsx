@@ -11,6 +11,9 @@ import "./globals.css";
 import { AppFirestore } from "./contexts/banco";
 import { AppCarrinho } from "./contexts/carrinho";
 
+//shadcn
+import { Toaster } from "@/components/ui/toaster"
+
 const poppins = Poppins({ subsets: ["latin"], weight: '400' });
 
 export const metadata: Metadata = {
@@ -34,6 +37,7 @@ export default function RootLayout({
           {children}
           </AppCarrinho>
         </AppFirestore>
+        <Toaster />
       </body>
     </html>
   );

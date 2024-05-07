@@ -16,20 +16,12 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
+import { useToast } from "@/components/ui/use-toast"
 
 //icons
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5"
 import { AiOutlineDelete } from "react-icons/ai"
+import ModalConfirmSameRestaurant from "./modalConfirmSameRestaurant"
 
 interface Product {
     product: any
@@ -37,6 +29,7 @@ interface Product {
 }
 
 const Add_Sacola = ({ product, quanty }: Product) => {
+    const { toast } = useToast()
     const [confirmSameRestaurant, setConfirmSameRestarant] = useState(false)
 
     const { setProductCarrinho, productCarrinho, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
@@ -52,6 +45,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
+
         const sameProduct = productCarrinho.find((sameProduct: any) => sameProduct.product.id === product.id)
 
         if (sameProduct) {
@@ -59,6 +53,11 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 item.product.id === product.id ? { ...item, quanty: item.quanty + quanty } : item
             );
             setProductCarrinho(updatedCarrinhoProduct)
+            toast({
+                description: (
+                    <h1 className="text-[var(--red)]" >Quantidade de {product.name} atualizada na sacola.</h1>
+                )
+            })
             return
         }
         const sameRestaurant = productCarrinho.find((sameRestaurant: any) => sameRestaurant.product.restaurantId != product.restaurantId)
@@ -67,16 +66,31 @@ const Add_Sacola = ({ product, quanty }: Product) => {
             return
         }
         setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
+        toast({
+            description: (
+                <h1 className="text-[var(--red)]" >Sacola atualizada.</h1>
+            )
+        })
     }
 
     const handleRemoverProductBag = (id: any) => {
         const remove = productCarrinho.filter((product: any) => product.product.id != id)
         setProductCarrinho(remove)
+        toast({
+            description: (
+                <h1 className="text-[var(--red)]" >Produto removido.</h1>
+            )
+        })
     }
-    
+
     const handleAddProdutSameRestaurant = () => {
         setProductCarrinho([])
         setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
+        toast({
+            description: (
+                <h1 className="text-[var(--red)]" >Sacola atualizada com um novo restaurante.</h1>
+            )
+        })
     }
 
     return (
@@ -199,23 +213,11 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                     </div>
                 </div>
             </div>
-            <AlertDialog open={confirmSameRestaurant} onOpenChange={setConfirmSameRestarant} >
-                <AlertDialogContent className='md:w-auto w-[90%] rounded-lg' >
-                    <AlertDialogHeader>
-                        <div className='flex md:flex-row flex-col items-center md:gap-1' >
-                            <AlertDialogTitle className='text-[var(--red)]'>Atenção!</AlertDialogTitle>
-                            <AlertDialogTitle>Produtos de diferentes resturantes.</AlertDialogTitle>
-                        </div>
-                        <AlertDialogDescription>
-                            Você não pode adicionar produtos de diferentes restaurantes na mesma sacola. Se você continuar, sua sacola será limpa e o novo produto será adicionado.
-                        </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                        <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                        <AlertDialogAction className='bg-[var(--red)] text-white' onClick={handleAddProdutSameRestaurant} >Continuar</AlertDialogAction>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-            </AlertDialog>
+            <ModalConfirmSameRestaurant
+                confirmSameRestaurant={confirmSameRestaurant}
+                setConfirmSameRestarant={setConfirmSameRestarant}
+                handleAddProdutSameRestaurant={handleAddProdutSameRestaurant}
+            />
         </>
     )
 }
