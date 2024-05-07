@@ -200,7 +200,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 </div>
             </div>
             <AlertDialog open={confirmSameRestaurant} onOpenChange={setConfirmSameRestarant} >
-                <AlertDialogContent className='md:max-w-[100%] w-auto rounded-lg' >
+                <AlertDialogContent className='md:w-auto w-[90%] rounded-lg' >
                     <AlertDialogHeader>
                         <div className='flex md:flex-row flex-col items-center md:gap-1' >
                             <AlertDialogTitle className='text-[var(--red)]'>Atenção!</AlertDialogTitle>
