@@ -22,6 +22,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5"
 import { AiOutlineDelete } from "react-icons/ai"
 import ModalConfirmSameRestaurant from "./modalConfirmSameRestaurant"
+import ModalConfirmDeletePedido from "./modalConfirmDeletePedido"
 
 interface Product {
     product: any
@@ -31,6 +32,8 @@ interface Product {
 const Add_Sacola = ({ product, quanty }: Product) => {
     const { toast } = useToast()
     const [confirmSameRestaurant, setConfirmSameRestarant] = useState(false)
+    const [confirmDeletePedido, setConfirmDeletePedido] = useState(false)
+    const [idDeletePedido, setIdDeletePedido] = useState()
 
     const { setProductCarrinho, productCarrinho, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
     const { firestoreRestaurant } = useAppContextFirestore()
@@ -64,7 +67,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
             setConfirmSameRestarant(true)
             return
         }
-        
+
         setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
         toast({
             description: (
@@ -74,13 +77,8 @@ const Add_Sacola = ({ product, quanty }: Product) => {
     }
 
     const handleRemoverProductBag = (id: any) => {
-        const remove = productCarrinho.filter((product: any) => product.product.id != id)
-        setProductCarrinho(remove)
-        toast({
-            description: (
-                <h1 className="text-[var(--red)]" >Produto removido.</h1>
-            )
-        })
+        setConfirmDeletePedido(true)
+        setIdDeletePedido(id)
     }
 
     const handleAddProdutSameRestaurant = () => {
@@ -89,6 +87,21 @@ const Add_Sacola = ({ product, quanty }: Product) => {
         toast({
             description: (
                 <h1 className="text-[var(--red)]" >Sacola atualizada com um novo restaurante.</h1>
+            )
+        })
+        toast({
+            description: (
+                <h1 className="text-[var(--red)]" >Sacola atualizada com um novo restaurante.</h1>
+            )
+        })
+    }
+
+    const handleConfirmDelete = () => {
+        const remove = productCarrinho.filter((product: any) => product.product.id != idDeletePedido)
+        setProductCarrinho(remove)
+        toast({
+            description: (
+                <h1 className="text-[var(--red)]" >Produto removido.</h1>
             )
         })
     }
@@ -217,6 +230,11 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 confirmSameRestaurant={confirmSameRestaurant}
                 setConfirmSameRestarant={setConfirmSameRestarant}
                 handleAddProdutSameRestaurant={handleAddProdutSameRestaurant}
+            />
+            <ModalConfirmDeletePedido
+                confirmDeletePedido={confirmDeletePedido}
+                setConfirmDeletePedido={setConfirmDeletePedido}
+                handleConfirmDelete={handleConfirmDelete}
             />
         </>
     )
