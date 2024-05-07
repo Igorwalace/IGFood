@@ -28,7 +28,7 @@ const ModalConfirmDeletePedido = ({ confirmDeletePedido, setConfirmDeletePedido,
         <AlertDialog open={confirmDeletePedido} onOpenChange={setConfirmDeletePedido} >
             <AlertDialogContent className='md:w-auto w-[95%] rounded-lg text-left' >
                 <AlertDialogHeader >
-                    <div className='flex md:flex-row flex-col items-start justify-start md:gap-1' >
+                    <div className='flex md:flex-row flex-col items-start justify-start text-left md:gap-1' >
                         <AlertDialogTitle className='text-[var(--red)]'>Atenção!</AlertDialogTitle>
                         <AlertDialogTitle>Deseja delete esse produto do carrinho?</AlertDialogTitle>
                     </div>

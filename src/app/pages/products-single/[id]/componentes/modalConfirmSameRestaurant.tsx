@@ -28,7 +28,7 @@ const ModalConfirmSameRestaurant = ({confirmSameRestaurant, setConfirmSameRestar
         <AlertDialog open={confirmSameRestaurant} onOpenChange={setConfirmSameRestarant} >
             <AlertDialogContent className='md:w-auto w-[95%] rounded-lg text-left' >
                 <AlertDialogHeader >
-                    <div className='flex md:flex-row flex-col items-start justify-start md:gap-1' >
+                    <div className='flex md:flex-row flex-col items-start justify-start text-left md:gap-1' >
                         <AlertDialogTitle className='text-[var(--red)]'>Atenção!</AlertDialogTitle>
                         <AlertDialogTitle>Produtos de diferentes resturantes.</AlertDialogTitle>
                     </div>
