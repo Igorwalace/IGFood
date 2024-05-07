@@ -68,9 +68,15 @@ const Add_Sacola = ({ product, quanty }: Product) => {
         }
         setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
     }
+
     const handleRemoverProductBag = (id: any) => {
         const remove = productCarrinho.filter((product: any) => product.product.id != id)
         setProductCarrinho(remove)
+    }
+    
+    const handleAddProdutSameRestaurant = () => {
+        setProductCarrinho([])
+        setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
     }
 
     return (
@@ -206,7 +212,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                        <AlertDialogAction className='bg-[var(--red)] text-white' >Continuar</AlertDialogAction>
+                        <AlertDialogAction className='bg-[var(--red)] text-white' onClick={handleAddProdutSameRestaurant} >Continuar</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
