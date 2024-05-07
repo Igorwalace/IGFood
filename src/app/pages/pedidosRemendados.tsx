@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 
 //pages
@@ -5,7 +6,7 @@ import Products from './componentes/products'
 import PedidosRecomendadosTitle from './componentes/pedidosRecomendadosTitle'
 
 const PedidosRecomendados = () => {
-
+    
     return (
         <>
             <main>

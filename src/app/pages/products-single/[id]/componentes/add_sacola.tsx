@@ -1,23 +1,34 @@
 'use client'
 
 //contexts
+import useAppContextFirestore from "@/app/contexts/banco"
 import useAppCarrinho from "@/app/contexts/carrinho"
 
 //react
-import { useEffect, useLayoutEffect, useState } from "react"
+import { useState } from "react"
+import Image from "next/image"
 
 //shadcn
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import Image from "next/image"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+
+//icons
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5"
-import useAppContextFirestore from "@/app/contexts/banco"
 import { AiOutlineDelete } from "react-icons/ai"
 
 interface Product {
@@ -26,6 +37,8 @@ interface Product {
 }
 
 const Add_Sacola = ({ product, quanty }: Product) => {
+    const [confirmSameRestaurant, setConfirmSameRestarant] = useState(false)
+
     const { setProductCarrinho, productCarrinho, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
     const { firestoreRestaurant } = useAppContextFirestore()
 
@@ -40,7 +53,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
 
     const handleAddProductCart = () => {
         const sameProduct = productCarrinho.find((sameProduct: any) => sameProduct.product.id === product.id)
-        
+
         if (sameProduct) {
             const updatedCarrinhoProduct = productCarrinho.map((item: any) =>
                 item.product.id === product.id ? { ...item, quanty: item.quanty + quanty } : item
@@ -49,8 +62,8 @@ const Add_Sacola = ({ product, quanty }: Product) => {
             return
         }
         const sameRestaurant = productCarrinho.find((sameRestaurant: any) => sameRestaurant.product.restaurantId != product.restaurantId)
-        if(sameRestaurant){
-            alert('So produtos do mesmo restaurantea')
+        if (sameRestaurant) {
+            setConfirmSameRestarant(true)
             return
         }
         setProductCarrinho((prevState: any) => ([...prevState, { product, quanty, subTotalProductSingle, totalProductSingle, totalDiscountBag }]));
@@ -70,7 +83,8 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 <div className="relative" >
                     <div className="flex items-center md:justify-start justify-between gap-4" >
                         <div className="flex items-center flex-col" >
-                            <span className="text-[#7E8392] md:text-sm text-xs" >Total sem entrega</span>
+                            <span className="text-[#7E8392] md:text-sm text-xs">
+                                Total sem entrega</span>
                             <div className="" >
                                 <span className="md:text-lg text-base font-extrabold" onClick={() => { setProductCarrinho([]) }} >R$ {totalPriceBag.toFixed(2).replace('.', ',')}</span>
                                 <span className="md:text-xs text-[10px] text-[#7E8392] " > / </span>
@@ -179,6 +193,23 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                     </div>
                 </div>
             </div>
+            <AlertDialog open={confirmSameRestaurant} onOpenChange={setConfirmSameRestarant} >
+                <AlertDialogContent className='md:max-w-[100%] w-auto rounded-lg' >
+                    <AlertDialogHeader>
+                        <div className='flex md:flex-row flex-col items-center md:gap-1' >
+                            <AlertDialogTitle className='text-[var(--red)]'>Atenção!</AlertDialogTitle>
+                            <AlertDialogTitle>Produtos de diferentes resturantes.</AlertDialogTitle>
+                        </div>
+                        <AlertDialogDescription>
+                            Você não pode adicionar produtos de diferentes restaurantes na mesma sacola. Se você continuar, sua sacola será limpa e o novo produto será adicionado.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                        <AlertDialogAction className='bg-[var(--red)] text-white' >Continuar</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </>
     )
 }
