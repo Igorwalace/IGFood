@@ -84,7 +84,7 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                     {
                       firestoreProducts
                         .filter((product: any) => product.restaurantId == id)
-                        .filter((bebida:any)=>bebida.category != 'bebida')
+                        .filter((bebida: any) => bebida.category != 'bebida')
                         .map((product: any, index: any) => (
                           <div key={index} >
                             <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
@@ -100,7 +100,7 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                       {
                         firestoreProducts
                           .filter((product: any) => product.restaurantId == id)
-                          .filter((bebida:any)=>bebida.category == 'bebida')
+                          .filter((bebida: any) => bebida.category == 'bebida')
                           .map((product: any, index: any) => (
                             <div key={index} >
                               <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />

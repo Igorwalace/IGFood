@@ -1,6 +1,5 @@
 import React from 'react'
 
-//shadc
 import {
     AlertDialog,
     AlertDialogAction,
@@ -11,33 +10,37 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import Link from 'next/link'
 
 interface Restaurant {
-    isModalConfirmExit: boolean
-    setIsModalConfirmExit: any
-    SignOut:any
+    confirmLogin: boolean
+    setConfirmLogin: any
 }
 
-const ModalConfirmExitAcconut = ({isModalConfirmExit, setIsModalConfirmExit, SignOut}: Restaurant) => {
+const ModalConfirmLogin = ({ confirmLogin, setConfirmLogin }: Restaurant) => {
     return (
-        <AlertDialog open={isModalConfirmExit} onOpenChange={setIsModalConfirmExit}  >
+        <AlertDialog open={confirmLogin} onOpenChange={setConfirmLogin} >
             <AlertDialogContent className='md:w-auto w-[95%] rounded-lg text-left' >
                 <AlertDialogHeader >
                     <div className='flex md:flex-row flex-col items-start justify-start text-left md:gap-1' >
                         <AlertDialogTitle className='text-[var(--red)]'>Atenção!</AlertDialogTitle>
-                        <AlertDialogTitle>Deseja sair da conta?</AlertDialogTitle>
+                        <AlertDialogTitle>Você não está logado.</AlertDialogTitle>
                     </div>
                     <AlertDialogDescription className='text-left' >
-                        Você poderá fazer login depois novamente.
+                        Para adicionar pedidos na sacola você precisa fazer login.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                    <AlertDialogAction className='bg-[var(--red)] text-white hover:bg-[var(--red)] hover:scale-105 duration-500' onClick={SignOut} >Sair</AlertDialogAction>
+                    <Link href='/pages/auth'>
+                        <AlertDialogAction className='bg-[var(--red)] text-white hover:bg-[var(--red)] hover:scale-105 duration-500' >
+                            Fazer Login
+                        </AlertDialogAction>
+                    </Link>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
     )
 }
 
-export default ModalConfirmExitAcconut
+export default ModalConfirmLogin

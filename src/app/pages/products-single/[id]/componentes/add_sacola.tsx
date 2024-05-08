@@ -3,9 +3,11 @@
 //contexts
 import useAppContextFirestore from "@/app/contexts/banco"
 import useAppCarrinho from "@/app/contexts/carrinho"
+import { AppContextFirebaseAuth } from "@/app/contexts/providers/auth"
 
 //react
-import { useState } from "react"
+import Link from "next/link"
+import { useContext, useState } from "react"
 import Image from "next/image"
 
 //shadcn
@@ -25,7 +27,7 @@ import { AiOutlineDelete } from "react-icons/ai"
 //pages (modals)
 import ModalConfirmSameRestaurant from "./modalConfirmSameRestaurant"
 import ModalConfirmDeletePedido from "./modalConfirmDeletePedido"
-import Link from "next/link"
+import ModalConfirmLogin from "./modalConfirmLogin"
 
 interface Product {
     product: any
@@ -34,12 +36,15 @@ interface Product {
 
 const Add_Sacola = ({ product, quanty }: Product) => {
     const { toast } = useToast()
+
     const [confirmSameRestaurant, setConfirmSameRestarant] = useState(false)
+    const [confirmLogin, setConfirmLogin] = useState<boolean>(false)
     const [confirmDeletePedido, setConfirmDeletePedido] = useState(false)
     const [idDeletePedido, setIdDeletePedido] = useState()
 
     const { setProductCarrinho, productCarrinho, quantyCurrent, setQuantyCurrent } = useAppCarrinho()
     const { firestoreRestaurant } = useAppContextFirestore()
+    const { user } = useContext(AppContextFirebaseAuth)
 
     const subTotalProductSingle = Number(product.price) * quanty
     const totalProductSingle = Number(product.price - product.price * product.discount / 100) * quanty
@@ -51,6 +56,11 @@ const Add_Sacola = ({ product, quanty }: Product) => {
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
+        if (!user.accessToken) {
+            setConfirmLogin(true)
+            return
+        }
+
         const sameProduct = productCarrinho.find((sameProduct: any) => sameProduct.product.id === product.id)
         if (sameProduct) {
             const updatedCarrinhoProduct = productCarrinho.map((item: any) =>
@@ -240,6 +250,10 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 confirmDeletePedido={confirmDeletePedido}
                 setConfirmDeletePedido={setConfirmDeletePedido}
                 handleConfirmDelete={handleConfirmDelete}
+            />
+            <ModalConfirmLogin
+                confirmLogin={confirmLogin}
+                setConfirmLogin={setConfirmLogin}
             />
         </>
     )
