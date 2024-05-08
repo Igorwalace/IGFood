@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+#imageLoading {
+    animation: imageLoading 3.5s infinite;
+}
+
+@keyframes imageLoading {
+    0% {
+        background-color: rgb(241 245 249);
+    }
+    50%{
+        background-color: rgb(197, 185, 185);
+    }
+    100%{
+        background-color: rgb(241 245 249);
+        
+    }
+}
+
 :root {
     --red: #ea1d2c;
 }

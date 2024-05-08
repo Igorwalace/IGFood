@@ -1,4 +1,7 @@
+//react
 import React, {  } from 'react'
+
+//pages
 import Header from './header';
 import BannerOfertas from './bannerOfertas'
 import Categorias from './categorias';

@@ -38,7 +38,7 @@ const ModalConfirmDeletePedido = ({ confirmDeletePedido, setConfirmDeletePedido,
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                    <AlertDialogAction className='bg-[var(--red)] text-white hover:bg-[var(--red)] hover:scale-105 duration-200' onClick={handleConfirmDelete} >Continuar</AlertDialogAction>
+                    <AlertDialogAction className='bg-[var(--red)] text-white hover:bg-[var(--red)] hover:scale-105 duration-500' onClick={handleConfirmDelete} >Continuar</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

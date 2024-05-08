@@ -21,8 +21,11 @@ import { useToast } from "@/components/ui/use-toast"
 //icons
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5"
 import { AiOutlineDelete } from "react-icons/ai"
+
+//pages (modals)
 import ModalConfirmSameRestaurant from "./modalConfirmSameRestaurant"
 import ModalConfirmDeletePedido from "./modalConfirmDeletePedido"
+import Link from "next/link"
 
 interface Product {
     product: any
@@ -119,7 +122,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                             <span className="text-[#7E8392] md:text-sm text-xs">
                                 Total sem entrega</span>
                             <div className="" >
-                                <span className="md:text-lg text-base font-extrabold" onClick={() => { setProductCarrinho([]) }} >R$ {totalPriceBag.toFixed(2).replace('.', ',')}</span>
+                                <span className="md:text-lg text-base font-extrabold">R$ {totalPriceBag.toFixed(2).replace('.', ',')}</span>
                                 <span className="md:text-xs text-[10px] text-[#7E8392] " > / </span>
                                 <span className="md:text-sm text-xs text-[#7E8392] ">{quantyCurrent} {quantyCurrent == 0 ? 'item' : 'itens'}</span>
                             </div>
@@ -141,15 +144,17 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                                     <div key={index}>
                                                         <div className="flex items-center justify-between gap-3">
                                                             <div className='flex items-center gap-3' >
-                                                                <div className="w-[110px] h-[90px]" >
-                                                                    <Image
-                                                                        src={product.product.imageUrl}
-                                                                        alt={product.product.name}
-                                                                        width={400}
-                                                                        height={400}
-                                                                        className='w-full h-full rounded-xl'
-                                                                    />
-                                                                </div>
+                                                                <Link href={`/pages/products-single/${product.product.id}`} >
+                                                                    <div className="w-[110px] h-[90px]" >
+                                                                        <Image
+                                                                            src={product.product.imageUrl}
+                                                                            alt={product.product.name}
+                                                                            width={400}
+                                                                            height={400}
+                                                                            className='w-full h-full rounded-xl'
+                                                                        />
+                                                                    </div>
+                                                                </Link>
                                                                 <div className="flex justify-center flex-col gap-2">
                                                                     <h1 className='md:text-sm text-xs' >{product.product.name}</h1>
                                                                     <div className='flex items-center gap-1' >
