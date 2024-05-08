@@ -5,18 +5,29 @@
 #imageLoading {
     animation: imageLoading 3.5s infinite;
 }
-
 @keyframes imageLoading {
     0% {
         background-color: rgb(241 245 249);
     }
-    50%{
+    50% {
         background-color: rgb(197, 185, 185);
     }
-    100%{
+    100% {
         background-color: rgb(241 245 249);
-        
     }
+}
+@keyframes isLoading {
+    to {
+        transform: rotate(1turn);
+    }
+}
+#isLoading {
+    animation: isLoading 1s infinite;
+    border: 6px solid #2a2a2a;
+    border-radius: 50%;
+    border-top-color: var(--red);
+    height: 50px;
+    width: 50px;
 }
 
 :root {

@@ -18,7 +18,7 @@ import { AppContextFirebaseAuth } from '@/app/contexts/providers/auth'
 
 const Page = () => {
     const router = useRouter();
-    const { user, setUser, signIn } = useContext(AppContextFirebaseAuth)
+    const { user, signInGoogle } = useContext(AppContextFirebaseAuth)
 
     useEffect(() => {
         if (user.accessToken) {
@@ -30,23 +30,21 @@ const Page = () => {
         <>
             <main className='md:px-[128px] p-5 md:py-5 py-3'  >
                 <main className='' >
-                    <div className='flex justify-between items-center border-b-[1px] border-[#7E8392] pb-6' >
+                    <div className='flex justify-between items-center pb-6' >
                         <main className='flex items-center justify-between w-full' >
                             <h1 className={`${sedgwick_Ave_Display.className} text-4xl text-black `}>IG<span className='text-[var(--red)]' >Food</span></h1>
                             <div className='flex flex-row-reverse items-center gap-4' >
-                                <Link href='/auth' >
-                                    <div
-                                        className='border-[1px] border-[#7E8392] p-2 rounded cursor-pointer hover:scale-110 hover:text-[#c1c1c1] duration-200'
-                                    >
-                                        <IoPerson size={20} />
+                                <div
+                                    className='border-[1px] border-[#7E8392] p-2 rounded cursor-pointer hover:scale-110 hover:text-[#c1c1c1] duration-200'
+                                >
+                                    <IoPerson size={20} />
 
-                                    </div>
-                                </Link>
+                                </div>
                             </div>
                         </main>
                     </div>
-                    <div className='my-5 flex flex-col justify-center items-center gap-5 h-[60vh]' >
-                        <button className="flex justify-center items-center gap-3 border-[1px] border-[#7E8392] bg-white text-black rounded-xl outline-none py-2 px-5 hover:scale-105 duration-200 w-[360px]" onClick={signIn}>
+                    <div className='my-5 flex flex-col justify-center items-center gap-3 h-[60vh]' >
+                        <button className="flex justify-center items-center gap-3 border-[1px] border-[#989ca5] bg-white text-black rounded-xl outline-none py-2 px-5 hover:scale-105 duration-200 w-[360px]" onClick={signInGoogle}>
                             <FcGoogle size={20} />
                             Continuar com Google
                         </button>

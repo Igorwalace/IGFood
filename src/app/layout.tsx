@@ -34,13 +34,13 @@ export default function RootLayout({
       </head>
       <body className={poppins.className}>
         <AppFirebaseAuth>
-        <AppFirestore>
-          <AppCarrinho>
-          {children}
-          </AppCarrinho>
-        </AppFirestore>
+          <AppFirestore>
+            <AppCarrinho>
+              {children}
+              <Toaster />
+            </AppCarrinho>
+          </AppFirestore>
         </AppFirebaseAuth>
-        <Toaster />
       </body>
     </html>
   );

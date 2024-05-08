@@ -2,7 +2,7 @@
 import { createContext, useState } from "react"
 
 //firebase
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import { auth } from "@/app/firebase/firebaseConfig";
 
 export const AppContextFirebaseAuth = createContext<any>(undefined);
@@ -11,16 +11,16 @@ export function AppFirebaseAuth({ children }: {
     children: React.ReactNode;
 }) {
     const [user, setUser] = useState<any>([])
+
     const provider = new GoogleAuthProvider();
 
-    const signIn = async () => {
+    const signInGoogle = async () => {
         await signInWithPopup(auth, provider)
             .then((result) => {
                 const credential: any = GoogleAuthProvider.credentialFromResult(result);
                 const token: any = credential.accessToken;
                 const user: any = result.user;
                 setUser(user)
-                console.log(user)
 
             }).catch((error) => {
                 const errorCode = error.code;
@@ -32,7 +32,7 @@ export function AppFirebaseAuth({ children }: {
     }
 
     return (
-        <AppContextFirebaseAuth.Provider value={{ user, setUser, signIn }} >
+        <AppContextFirebaseAuth.Provider value={{ user, setUser, signInGoogle }} >
             {children}
         </AppContextFirebaseAuth.Provider>
     )

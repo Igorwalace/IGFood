@@ -22,6 +22,7 @@ import { GoChecklist } from 'react-icons/go'
 //context Auth
 import { AppContextFirebaseAuth } from '@/app/contexts/providers/auth'
 import Image from 'next/image'
+import Button_SignOut from './componente-menu/button-signOut'
 
 //pages
 
@@ -77,13 +78,7 @@ const Menu = () => {
                                 <span className='md:text-sm text-xs ' >Restaurantes Favoritos</span>
                             </div>
                         </div>
-                        {
-                            user.accessToken &&
-                            <button className='absolute bottom-5 left-5 right-0 flex items-center gap-2 rounded-xl p-2' >
-                                <span><IoExitOutline /></span>
-                                <span className='md:text-sm text-xs ' >Sair da conta</span>
-                            </button>
-                        }
+                        <Button_SignOut />
                     </SheetHeader>
                 </SheetContent>
             </Sheet>
