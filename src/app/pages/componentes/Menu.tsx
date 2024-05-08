@@ -41,18 +41,18 @@ const Menu = () => {
                         <div className='my-5' >
                             {
                                 user.accessToken ?
-                                    <div className='flex items-center justify-start w-full' >
+                                    <div className='flex items-center justify-start gap-2 md:gap-3 w-full' >
                                         <div>
                                             <Image
                                                 src={user.photoURL}
                                                 alt={`Avatar de ${user.displayName}`}
                                                 width={400}
                                                 height={400}
-                                                className='md:w-[30px] md:h-[30px] rounded-full border-2 border-[var(--red)]'
+                                                className='md:w-[40px] md:h-[40px] w-[35px] h-[35px] rounded-full border-2 border-[var(--red)]'
                                             />
                                         </div>
                                         <div className='flex flex-col items-start justify-start' >
-                                            <h1 className='font-extrabold capitalize' >{user.displayName}</h1>
+                                            <h1 className='font-extrabold capitalize md:text-base text-sm' >{user.displayName}</h1>
                                             <span className='md:text-xs text-[10px] text-[#7E8392]' >{user.email}</span>
                                         </div>
                                     </div>
