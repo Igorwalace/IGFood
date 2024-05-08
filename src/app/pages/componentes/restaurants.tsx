@@ -30,8 +30,8 @@ const Restaurants = () => {
                             >
                                 {/* Replace with your product content and placeholder logic */}
                                 <div className='md:w-[366px] md:h-[180px] w-[136px] h-[150px] rounded-xl bg-slate-100' id='imageLoading'></div>
-                                <div className='md:w-[366px] md:h-[35px] w-[136px] h-[150px] rounded-xl bg-slate-100' id='imageLoading'></div>
-                                <div className='md:w-[366px] md:h-[35px] w-[136px] h-[150px] rounded-xl bg-slate-100' id='imageLoading'></div>
+                                <div className='md:w-[366px] md:h-[35px] w-[136px] h-[25px] rounded-xl bg-slate-100' id='imageLoading'></div>
+                                <div className='md:w-[366px] md:h-[35px] w-[136px] h-[25px] rounded-xl bg-slate-100' id='imageLoading'></div>
                             </div>
                         ))
                     }
