@@ -29,8 +29,8 @@ const AllRestaurants = ({restaurants}: Restaurants) => {
 
     return (
         <>
-            <Link href={`pages/restaurantsSingle/${restaurants.id}`} className='hover:scale-95 duration-200' >
-                <div className="flex flex-col items-start justify-center gap-2 relative">
+            <Link href={`/pages/restaurantsSingle/${restaurants.id}`} className='' >
+                <div className="flex flex-col items-start justify-center gap-2 relative hover:scale-95 duration-200">
                     <div className='md:w-[381px] md:h-[165px] w-[266px] h-[136px] relative'>
                         <Image
                             src={restaurants.imageUrl}
