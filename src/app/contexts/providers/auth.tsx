@@ -15,21 +15,13 @@ export const AppContextFirebaseAuth = createContext<any>(undefined);
 export function AppFirebaseAuth({ children }: {
     children: React.ReactNode;
 }) {
-
+    const [user, setUser] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem('userIgfood') || "[]"),)
+    
     useEffect(() => {
-        const userStorage = JSON.parse(safeLocalStorage()?.getItem("user-igfood") || "[]")
-        if (userStorage) {
-            setUser(userStorage)
-        }
-    }, []);
-
-    const [user, setUser] = useState<any[]>([])
-    const provider = new GoogleAuthProvider();
-
-    useEffect(() => {
-        safeLocalStorage()?.setItem("user-igfood", JSON.stringify(user));
+        safeLocalStorage()?.setItem('userIgfood', JSON.stringify(user));
     }, [user]);
-
+    
+    const provider = new GoogleAuthProvider();
     const signInGoogle = async () => {
         await signInWithPopup(auth, provider)
             .then((result) => {

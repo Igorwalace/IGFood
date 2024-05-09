@@ -41,7 +41,7 @@ const Menu = () => {
                     <SheetHeader>
                         <div className='mt-5 pb-5 border-b-[1px] border-b-[#b4b6bc]' >
                             {
-                                user.accessToken ?
+                                user.uid ?
                                     <div className='flex items-center justify-start gap-2 md:gap-3 w-full' >
                                         <div>
                                             <Image

@@ -56,7 +56,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
-        if (!user.accessToken) {
+        if (!user.uid) {
             setConfirmLogin(true)
             return
         }

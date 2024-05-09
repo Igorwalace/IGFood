@@ -19,7 +19,7 @@ const Page = () => {
     const { user, signInGoogle } = useContext(AppContextFirebaseAuth)
 
     useEffect(() => {
-        if (user.accessToken) {
+        if (user.uid) {
             router.push('/')
         }
     }, [user, router]);

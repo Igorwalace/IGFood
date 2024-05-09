@@ -9,7 +9,6 @@ export function AppCarrinho({ children }: {
 }) {
 
     const [productCarrinho, setProductCarrinho] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("cart-products") || "[]"),)
-    // const [productCarrinho, setProductCarrinho] = useState<any[]>([])
     const [quantyCurrent, setQuantyCurrent] = useState(0)
 
     useEffect(() => {

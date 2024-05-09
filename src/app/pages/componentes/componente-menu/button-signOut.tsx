@@ -39,7 +39,7 @@ const Button_SignOut = () => {
     return (
         <>
             {
-                user.accessToken &&
+                user.uid &&
                 < button className='absolute bottom-5 left-5 right-0 flex items-center gap-2 rounded-xl p-2' onClick={SignOutConfirm} >
                     <span><IoExitOutline /></span>
                     <span className='md:text-sm text-xs ' >Sair da conta</span>
