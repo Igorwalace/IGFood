@@ -15,7 +15,15 @@ export const AppContextFirebaseAuth = createContext<any>(undefined);
 export function AppFirebaseAuth({ children }: {
     children: React.ReactNode;
 }) {
-    const [user, setUser] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("user-igfood") || "[]"),)
+
+    useEffect(() => {
+        const userStorage = JSON.parse(safeLocalStorage()?.getItem("user-igfood") || "[]")
+        if (userStorage) {
+            setUser(userStorage)
+        }
+    }, []);
+
+    const [user, setUser] = useState<any[]>([])
     const provider = new GoogleAuthProvider();
 
     useEffect(() => {
