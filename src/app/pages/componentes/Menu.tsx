@@ -69,14 +69,14 @@ const Menu = () => {
                                 <span><IoHomeOutline /></span>
                                 <span className='md:text-sm text-xs ' >Ínicio</span>
                             </div>
-                            <div className='flex items-center gap-2 rounded-xl p-2' >
+                            <Link href='/' className='flex items-center gap-2 rounded-xl p-2' >
                                 <span><GoChecklist /></span>
                                 <span className='md:text-sm text-xs ' >Meus Pedidos</span>
-                            </div>
-                            <div className='flex items-center gap-2 rounded-xl p-2' >
+                            </Link>
+                            <Link href='/pages/restaurants_favorite' className='flex items-center gap-2 rounded-xl p-2' >
                                 <span><FaRegHeart /></span>
                                 <span className='md:text-sm text-xs ' >Restaurantes Favoritos</span>
-                            </div>
+                            </Link>
                         </div>
                         <Button_SignOut />
                     </SheetHeader>

@@ -1,18 +1,26 @@
 'use client'
-import { createContext, useState } from "react"
+
+//react
+import { createContext, useEffect, useState } from "react"
 
 //firebase
-import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "@/app/firebase/firebaseConfig";
+
+//pages
+import safeLocalStorage from "@/app/helps/local_storage";
 
 export const AppContextFirebaseAuth = createContext<any>(undefined);
 
 export function AppFirebaseAuth({ children }: {
     children: React.ReactNode;
 }) {
-    const [user, setUser] = useState<any>([])
-
+    const [user, setUser] = useState<any[]>(JSON.parse(safeLocalStorage()?.getItem("user") || "[]"),)
     const provider = new GoogleAuthProvider();
+
+    useEffect(() => {
+        safeLocalStorage()?.setItem("user", JSON.stringify(user));
+    }, [user]);
 
     const signInGoogle = async () => {
         await signInWithPopup(auth, provider)

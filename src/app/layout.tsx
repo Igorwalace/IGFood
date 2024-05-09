@@ -10,10 +10,11 @@ import "./globals.css";
 //contexts
 import { AppFirestore } from "./contexts/banco";
 import { AppCarrinho } from "./contexts/carrinho";
+import { AppFirebaseAuth } from "./contexts/providers/auth";
+import { AppRestaurantsFavorite } from "./contexts/restaurants_favorite";
 
 //shadcn
 import { Toaster } from "@/components/ui/toaster"
-import { AppFirebaseAuth } from "./contexts/providers/auth";
 
 const poppins = Poppins({ subsets: ["latin"], weight: '400' });
 
@@ -36,7 +37,9 @@ export default function RootLayout({
         <AppFirebaseAuth>
           <AppFirestore>
             <AppCarrinho>
+              <AppRestaurantsFavorite>
               {children}
+              </AppRestaurantsFavorite>
               <Toaster />
             </AppCarrinho>
           </AppFirestore>
