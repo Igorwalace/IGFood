@@ -1,7 +1,6 @@
 'use client'
 //context
 import useAppContextFirestore from '@/app/contexts/banco'
-import useAppRestaurantsFavorite from '@/app/contexts/restaurants_favorite'
 
 //react'
 
@@ -14,7 +13,6 @@ import AllRestaurants from './allRestaurants'
 const Restaurants = () => {
 
     const { firestoreRestaurant } = useAppContextFirestore()
-    const { setRestaurantsFavorite } = useAppRestaurantsFavorite()
 
     return (
         <>

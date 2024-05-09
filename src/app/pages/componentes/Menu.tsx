@@ -39,7 +39,7 @@ const Menu = () => {
                 <SheetContent>
                     <SheetTitle>Menu</SheetTitle>
                     <SheetHeader>
-                        <div className='my-5' >
+                        <div className='mt-5 pb-5 border-b-[1px] border-b-[#b4b6bc]' >
                             {
                                 user.accessToken ?
                                     <div className='flex items-center justify-start gap-2 md:gap-3 w-full' >
@@ -64,12 +64,12 @@ const Menu = () => {
                                     </Link>
                             }
                         </div>
-                        <div className='space-y-1' >
-                            <div className='flex items-center gap-2 rounded-xl p-2' >
+                        <div className='space-y-1 border-b-[1px] border-b-[#b4b6bc] pb-4' >
+                            <Link href='/' className='flex items-center gap-2 rounded-xl p-2' >
                                 <span><IoHomeOutline /></span>
                                 <span className='md:text-sm text-xs ' >Ínicio</span>
-                            </div>
-                            <Link href='/' className='flex items-center gap-2 rounded-xl p-2' >
+                            </Link>
+                            <Link href='/pages/meus_pedidos' className='flex items-center gap-2 rounded-xl p-2' >
                                 <span><GoChecklist /></span>
                                 <span className='md:text-sm text-xs ' >Meus Pedidos</span>
                             </Link>

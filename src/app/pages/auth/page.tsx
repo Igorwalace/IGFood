@@ -1,7 +1,6 @@
 'use client'
 //react
 import React, { useContext, useEffect } from 'react'
-import Link from 'next/link'
 
 //icons
 import { IoPerson } from 'react-icons/io5'
@@ -12,7 +11,6 @@ import { FaApple, FaFacebook } from 'react-icons/fa'
 import { sedgwick_Ave_Display } from '@/app/fonts/fonts'
 
 //authContext
-import useAppContextFirestore from '@/app/contexts/banco'
 import { useRouter } from 'next/navigation'
 import { AppContextFirebaseAuth } from '@/app/contexts/providers/auth'
 

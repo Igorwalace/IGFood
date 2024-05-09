@@ -1,18 +1,23 @@
-import useAppContextFirestore from '@/app/contexts/banco'
+//context
 import useAppRestaurantsFavorite from '@/app/contexts/restaurants_favorite'
+
+//react
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+
+//icons
 import { FaHeart, FaMotorcycle, FaRegHeart } from 'react-icons/fa'
 import { PiTimer } from 'react-icons/pi'
 
+//shadc 
+import { useToast } from "@/components/ui/use-toast"
+
 interface Restaurants {
-    restaurants:any
+    restaurants: any
 }
 
-const AllRestaurants = ({restaurants}: Restaurants) => {
-
-    const { firestoreRestaurant } = useAppContextFirestore()
+const AllRestaurants = ({ restaurants }: Restaurants) => {
+    const { toast } = useToast()
     const { setRestaurantsFavorite, restaurantsFavorite } = useAppRestaurantsFavorite()
 
     const handleRestaurantFavorite = (e: any, restaurants: any) => {
@@ -24,7 +29,14 @@ const AllRestaurants = ({restaurants}: Restaurants) => {
             return
         }
         setRestaurantsFavorite((prev: any) => ([...prev, restaurants]))
-
+        toast({
+            description: (
+                <div className='text-center flex items-center justify-between' >
+                    <span className="text-[var(--red)]" >Restaurante {restaurants.name} foi adicionado aos favoritos</span>
+                    <Link href='/pages/restaurants_favorite' className='p-2 bg-[var(--red)] w-[45%] text-white rounded-xl' >Ver favoritos</Link>
+                </div>
+            )
+        })
     }
 
     return (
