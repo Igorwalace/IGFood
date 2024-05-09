@@ -33,7 +33,7 @@ const ModalConfirmLogin = ({ confirmLogin, setConfirmLogin }: Restaurant) => {
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancelar</AlertDialogCancel>
                     <Link href='/pages/auth' className='md:w-auto w-full' >
-                        <AlertDialogAction className='bg-[var(--red)] text-white hover:bg-[var(--red)] hover:scale-105 duration-500' >
+                        <AlertDialogAction className='bg-[var(--red)] text-white hover:bg-[var(--red)] hover:scale-105 duration-500 w-full' >
                             Fazer Login
                         </AlertDialogAction>
                     </Link>
