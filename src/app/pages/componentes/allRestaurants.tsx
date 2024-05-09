@@ -31,7 +31,7 @@ const AllRestaurants = ({ restaurants }: Restaurants) => {
         setRestaurantsFavorite((prev: any) => ([...prev, restaurants]))
         toast({
             description: (
-                <div className='text-center flex items-center justify-between gap-2' >
+                <div className='text-center flex items-center flex-row-reverse md:flex-row justify-between gap-2' >
                     <span className="text-[var(--red)] w-[65%]" >Restaurante {restaurants.name} foi adicionado aos favoritos</span>
                     <Link href='/pages/restaurants_favorite' className='p-2 bg-[var(--red)] w-[35%] text-white rounded-xl' >Ver favoritos</Link>
                 </div>

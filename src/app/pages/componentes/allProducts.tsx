@@ -51,7 +51,7 @@ const AllProducts = ({ product, index, firestoreRestaurant }: Props) => {
                         {firestoreRestaurant
                             .filter((restaurants: any) => restaurants.id === product.restaurantId)
                             .map((restaurant: any, index: any) => (
-                                <Link href={`/pages/restaurantsSingle/${restaurant.id}`} key={index} className='flex items-center gap-1' >
+                                <Link href={`/pages/restaurantsSingle/${restaurant.id}`} key={index} className='flex items-center gap-1 hover:scale-110 duration-200' >
                                     <Image
                                         src={restaurant.imageUrl}
                                         alt={restaurant.name}
