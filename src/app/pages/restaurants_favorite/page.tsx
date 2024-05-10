@@ -21,7 +21,7 @@ const Page = () => {
         </div>
         {
 
-          restaurantsFavorite.length > 1 &&
+          restaurantsFavorite.length > 0 &&
           <div>
             <PedidosRecomendadosTitle title={'Restaurantes Favoritos'} isVerTudo={false} />
           </div>
