@@ -96,9 +96,9 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                             <span className="md:text-base text-sm text-[#7E8392] line-through" >de R$ {product.price.toFixed(2).replace('.', ',')}</span>
                                                         }
                                                     </div>
-                                                    <div className="flex items-center gap-3" >
+                                                    <div className="flex items-center justify-between gap-1" >
                                                         <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" onClick={handleAnyLessQuanty} ><IoRemoveOutline /></button>
-                                                        <span>{quanty}</span>
+                                                        <span className='w-2 text-center' >{quanty}</span>
                                                         <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" onClick={handleMoreQuanty} ><IoAddOutline /></button>
                                                     </div>
                                                 </div>
