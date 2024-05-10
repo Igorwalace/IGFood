@@ -44,7 +44,9 @@
 :root {
     --red: #ea1d2c;
 }
-
+#my-scrollable-element{
+    transition: 1s;
+}
 @layer base {
     :root {
         --background: 0 0% 100%;

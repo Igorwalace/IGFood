@@ -16,8 +16,8 @@ const Restaurants = () => {
 
     return (
         <>
-            <main>
-                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide'>
+            <main className='relative duration-1000' >
+                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide relative' id='my-scrollable-element' >
                     {
                         firestoreRestaurant.length < 1 &&
                         oneToSix.slice(0, 6).map((product: any, index: any) => (
@@ -36,11 +36,12 @@ const Restaurants = () => {
                         .slice(0, 6)
                         .map((restaurants: any, index: any) => (
                             <div key={index} >
-                                <AllRestaurants restaurants={restaurants}/>
+                                <AllRestaurants restaurants={restaurants} />
                             </div>
                         ))
                     }
                 </div>
+
             </main>
         </>
     )
