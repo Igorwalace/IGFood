@@ -78,7 +78,7 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                 {/* products recomendados */}
                 <div className='md:my-5 md:p-0 px-5' >
                   <>
-                    <PedidosRecomendadosTitle title={restaurant.category} isVerTudo={false} />
+                    <PedidosRecomendadosTitle title={'Da casa'} isVerTudo={false} />
                   </>
                   <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
                     {
@@ -92,23 +92,30 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                         ))
                     }
                   </div>
-                  <div className='my-5' >
-                    <>
-                      <PedidosRecomendadosTitle title={'Bebidas'} isVerTudo={false} />
-                    </>
-                    <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
-                      {
-                        firestoreProducts
-                          .filter((product: any) => product.restaurantId == id)
-                          .filter((bebida: any) => bebida.category == 'bebida')
-                          .map((product: any, index: any) => (
-                            <div key={index} >
-                              <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
-                            </div>
-                          ))
-                      }
+                  {
+                    firestoreProducts
+                    .filter((filter:any) => filter.restaurantId == id)
+                    .find((product:any) => product.category == 'bebida' )
+                    &&
+
+                      <div className='my-5' >
+                      <>
+                        <PedidosRecomendadosTitle title={'Bebidas'} isVerTudo={false} />
+                      </>
+                      <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
+                        {
+                          firestoreProducts
+                            .filter((product: any) => product.restaurantId == id)
+                            .filter((bebida: any) => bebida.category == 'bebida')
+                            .map((product: any, index: any) => (
+                              <div key={index} >
+                                <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
+                              </div>
+                            ))
+                        }
+                      </div>
                     </div>
-                  </div>
+                  }
                   <div>
 
                   </div>
