@@ -119,7 +119,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                 </div>
                             </div>
                             <div className="md:p-0 md:py-5 px-5 pb-10" >
-                                <Products_Type />
+                                <Products_Type restaurantId={product.restaurantId} />
                             </div>
                         </div>
                     ))}

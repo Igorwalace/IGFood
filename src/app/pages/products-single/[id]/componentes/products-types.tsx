@@ -8,7 +8,11 @@ import PedidosRecomendadosTitle from '@/app/pages/componentes/pedidosRecomendado
 //react
 import React from 'react'
 
-const Products_Type = () => {
+interface restaurantId {
+    restaurantId:any
+}
+
+const Products_Type = ({restaurantId}: restaurantId) => {
 
     const { firestoreProducts, firestoreRestaurant, quantyCurrent } = useAppContextFirestore()
 
@@ -16,10 +20,12 @@ const Products_Type = () => {
         <>
             <main className={`${quantyCurrent == 0 ? 'pb-0' : 'pb-12'}`} >
                 <div>
-                    <PedidosRecomendadosTitle title={`Pedidos Recomendados`} isVerTudo={false} />
+                    <PedidosRecomendadosTitle title={`pratos do mesmo restaurante`} isVerTudo={false} />
                 </div>
                 <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide'>
-                    {firestoreProducts.map((product: any, index: any) => (
+                    {firestoreProducts
+                    .filter((product:any) => product.restaurantId == restaurantId )
+                    .map((product: any, index: any) => (
                         <div key={index} >
                             <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />
                         </div>
