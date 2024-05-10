@@ -31,10 +31,11 @@ import ModalConfirmLogin from "./modalConfirmLogin"
 
 interface Product {
     product: any
+    setQuanty:any
     quanty: number
 }
 
-const Add_Sacola = ({ product, quanty }: Product) => {
+const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
     const { toast } = useToast()
 
     const [confirmSameRestaurant, setConfirmSameRestarant] = useState(false)
@@ -87,6 +88,8 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                 <h1 className="text-[var(--red)]" >Sacola atualizada.</h1>
             )
         })
+        setQuanty(1)
+
     }
 
     const handleRemoverProductBag = (id: any) => {

@@ -112,7 +112,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                     <p className="md:text-sm text-xs text-[#7E8392] text-justify" >{product.about}</p>
                                                 </div>
 
-                                                <Add_Sacola product={product} quanty={quanty} />
+                                                <Add_Sacola product={product} quanty={quanty} setQuanty={setQuanty} />
 
                                             </div>
                                         ))}
