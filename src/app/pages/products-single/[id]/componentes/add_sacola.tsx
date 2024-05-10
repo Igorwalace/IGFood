@@ -28,10 +28,11 @@ import { AiOutlineDelete } from "react-icons/ai"
 import ModalConfirmSameRestaurant from "./modalConfirmSameRestaurant"
 import ModalConfirmDeletePedido from "./modalConfirmDeletePedido"
 import ModalConfirmLogin from "./modalConfirmLogin"
+import Discount from "@/app/pages/componentes/discount"
 
 interface Product {
     product: any
-    setQuanty:any
+    setQuanty: any
     quanty: number
 }
 
@@ -53,7 +54,7 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
     const totalDiscountBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.product.discount / 100 * product.quanty, 0)
     const subTotalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty, 0)
     const totalQuantyBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.quanty), 0);
-    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty - totalDiscountBag , 0);
+    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty - totalDiscountBag, 0);
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
@@ -182,8 +183,8 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
                                             {
                                                 productCarrinho.map((product: any, index: any) => (
                                                     <div key={index}>
-                                                        <div className="flex items-center justify-between gap-3">
-                                                            <div className='flex items-center gap-3' >
+                                                        <div className="flex items-center justify-between gap-3 w-full" >
+                                                            <div className='flex items-center gap-3 w-full' >
                                                                 <Link href={`/pages/products-single/${product.product.id}`} >
                                                                     <div className="w-[110px] h-[90px]" >
                                                                         <Image
@@ -195,18 +196,18 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
                                                                         />
                                                                     </div>
                                                                 </Link>
-                                                                <div className="flex justify-center flex-col gap-2">
+                                                                <div className="flex justify-center flex-col gap-2 w-full   ">
                                                                     <h1 className='md:text-sm text-xs' >{product.product.name}</h1>
                                                                     <div className='flex items-center gap-1' >
                                                                         <span className="md:text-base text-sm font-extrabold" >R$ {product.product.price.toFixed(2).replace('.', ',')}</span>
                                                                         {
-                                                                            product.product.discount != '0' && <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {product.subTotalProductSingle.toFixed(2).replace('.', ',')}</span>
+                                                                            product.product.discount != '0' && <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {Discount(product.product.price, product.product.discount).toFixed(2).replace('.', ',')}</span>
                                                                         }
                                                                     </div>
-                                                                    <div className="flex items-center justify-between gap-1" >
+                                                                    <div className="flex items-center justify-start gap-4 w-full" >
                                                                         <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" onClick={() => handleRemoveQuanty(product.product.id, product.quanty - 1)} ><IoRemoveOutline /></button>
                                                                         <span className='w-2 text-center' >{product.quanty}</span>
-                                                                        <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" onClick={() => handleAddQuanty(product.product.id, product.quanty + 1)} ><IoAddOutline /></button>
+                                                                        <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)] text-white" onClick={() => handleAddQuanty(product.product.id, product.quanty + 1)} ><IoAddOutline /></button>
                                                                     </div>
                                                                 </div>
                                                             </div>
