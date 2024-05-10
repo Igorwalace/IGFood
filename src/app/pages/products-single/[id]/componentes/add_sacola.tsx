@@ -52,7 +52,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
     const totalDiscountBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.product.discount / 100 * product.quanty, 0)
     const subTotalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty, 0)
     const totalQuantyBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.quanty), 0);
-    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + product.totalProductSingle, 0);
+    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + (parseFloat(product.product.price) - totalDiscountBag) * product.quanty, 0);
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
@@ -119,6 +119,33 @@ const Add_Sacola = ({ product, quanty }: Product) => {
         })
     }
 
+    const handleRemoveQuanty = (id: any, quantyy: number) => {
+        if (quantyy == 0) {
+            return
+        }
+        setProductCarrinho((prevState: any) => {
+            const updatedCart = prevState.map((cartItem: any) => {
+                if (cartItem.product.id == id) {
+                    return { ...cartItem, quanty: quantyy };
+                }
+                return cartItem;
+            });
+            return updatedCart;
+        });
+    };
+    const handleAddQuanty = (id: any, quantyy: number) => {
+        setProductCarrinho((prevState: any) => {
+            const updatedCart = prevState.map((cartItem: any) => {
+                if (cartItem.product.id == id) {
+                    return { ...cartItem, quanty: quantyy };
+                }
+                return cartItem;
+            });
+            return updatedCart;
+        });
+    };
+
+
     return (
         <>
             <div className="flex justify-center items-center mt-5" >
@@ -141,7 +168,7 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                             <SheetTrigger className="bg-[var(--red)] rounded-lg py-2 px-3 text-white hover:scale-105 duration-200" >
                                 Ver Sacola
                             </SheetTrigger>
-                            <SheetContent side='left' className="md:w-[50%] w-[80%] rounded-xl" >
+                            <SheetContent side='left' className="md:w-[50%] w-[80%]" >
                                 <SheetHeader className="h-full" >
                                     <SheetTitle>Sacola</SheetTitle>
                                     <div className="flex items-start flex-col justify-between gap-3 flex-wrap h-full" >
@@ -173,10 +200,10 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                                                             product.product.discount != '0' && <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {product.subTotalProductSingle.toFixed(2).replace('.', ',')}</span>
                                                                         }
                                                                     </div>
-                                                                    <div className="flex items-center gap-3" >
-                                                                        <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" ><IoRemoveOutline /></button>
-                                                                        <span>{product.quanty}</span>
-                                                                        <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" ><IoAddOutline /></button>
+                                                                    <div className="flex items-center justify-between gap-1" >
+                                                                        <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" onClick={() => handleRemoveQuanty(product.product.id, product.quanty - 1)} ><IoRemoveOutline /></button>
+                                                                        <span className='w-2 text-center' >{product.quanty}</span>
+                                                                        <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" onClick={() => handleAddQuanty(product.product.id, product.quanty + 1)} ><IoAddOutline /></button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -194,10 +221,13 @@ const Add_Sacola = ({ product, quanty }: Product) => {
                                                     .filter((restaurant: any) => restaurant.id == product.restaurantId)
                                                     .map((restaurant: any, index: any) => (
                                                         <div className="border-t-[1px] border-t-[#7E8392] w-full py-2 space-y-3" key={index} >
-                                                            <div className="flex items-center justify-between" >
-                                                                <span className='md:text-sm text-xs' >SubTotal:</span>
-                                                                <span className='md:text-sm text-xs' >R$ {subTotalPriceBag.toFixed(2).replace('.', ',')}</span>
-                                                            </div>
+                                                            {
+                                                                product.discount != '0' &&
+                                                                <div className="flex items-center justify-between" >
+                                                                    <span className='md:text-sm text-xs' >SubTotal:</span>
+                                                                    <span className='md:text-sm text-xs' >R$ {subTotalPriceBag.toFixed(2).replace('.', ',')}</span>
+                                                                </div>
+                                                            }
                                                             {
                                                                 product.discount != '0' &&
                                                                 <div className="flex items-center justify-between" >
