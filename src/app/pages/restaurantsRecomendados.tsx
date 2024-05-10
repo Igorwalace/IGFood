@@ -15,7 +15,7 @@ const RestaurantsRecomendados = () => {
 
     const handleScroll = () => {
         const element: any = document.getElementById('my-scrollable-element');
-        const targetScrollPosition = element.scrollLeft + 800; // Posição final da rolagem
+        const targetScrollPosition = element.scrollLeft + 300; // Posição final da rolagem
 
         const scrollAmount = 40; // Quantidade de pixels por atualização
         let currentScrollPosition = element.scrollLeft; // Posição inicial da rolagem
@@ -37,7 +37,7 @@ const RestaurantsRecomendados = () => {
     };
     const handleScrollRight = () => {
         const element: any = document.getElementById('my-scrollable-element');
-        const targetScrollPosition = element.scrollLeft - 800; // Target position (scroll left by 300px)
+        const targetScrollPosition = element.scrollLeft - 300; // Target position (scroll left by 300px)
 
         const scrollAmount = 40; // Number of pixels to scroll per update
         let currentScrollPosition = element.scrollLeft; // Current scroll position
