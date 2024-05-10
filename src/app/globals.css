@@ -29,6 +29,17 @@
     height: 50px;
     width: 50px;
 }
+@keyframes sacola {
+    from {
+        bottom: -100vh;
+    }
+    to {
+        bottom: 0;
+    }
+}
+#sacola {
+    animation: sacola 0.5s;
+}
 
 :root {
     --red: #ea1d2c;

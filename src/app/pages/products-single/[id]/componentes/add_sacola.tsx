@@ -156,8 +156,8 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
                 <button className="bg-[var(--red)] py-3 text-white rounded-xl w-full hover:scale-105 duration-200" onClick={() => handleAddProductCart()} >Adicionar na sacola</button>
             </div>
 
-            <div className={`fixed bottom-0 left-0 right-0 bg-white md:px-[128px] px-5 py-2 ${quantyCurrent == 0 ? 'invisible' : 'visible'}`} >
-                <div className="relative" >
+            <div className={`fixed bottom-0 left-0 right-0 bg-white md:px-[128px] px-5 py-2 ${quantyCurrent == 0 ? 'hidden' : 'block'}`} >
+                <div className="relative" id="sacola" >
                     <div className="flex items-center md:justify-start justify-between gap-4" >
                         <div className="flex items-center flex-col" >
                             <span className="text-[#7E8392] md:text-sm text-xs">
@@ -199,9 +199,9 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
                                                                 <div className="flex justify-center flex-col gap-2 w-full   ">
                                                                     <h1 className='md:text-sm text-xs' >{product.product.name}</h1>
                                                                     <div className='flex items-center gap-1' >
-                                                                        <span className="md:text-base text-sm font-extrabold" >R$ {product.product.price.toFixed(2).replace('.', ',')}</span>
+                                                                        <span className="md:text-base text-sm font-extrabold" >R$ {Discount(product.product.price, product.product.discount).toFixed(2).replace('.', ',')}</span>
                                                                         {
-                                                                            product.product.discount != '0' && <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {Discount(product.product.price, product.product.discount).toFixed(2).replace('.', ',')}</span>
+                                                                            product.product.discount != '0' && <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {product.product.price.toFixed(2).replace('.', ',')}</span>
                                                                         }
                                                                     </div>
                                                                     <div className="flex items-center justify-start gap-4 w-full" >
@@ -225,20 +225,16 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
                                                     .filter((restaurant: any) => restaurant.id == product.restaurantId)
                                                     .map((restaurant: any, index: any) => (
                                                         <div className="border-t-[1px] border-t-[#7E8392] w-full py-2 space-y-3" key={index} >
-                                                            {
-                                                                product.discount != '0' &&
-                                                                <div className="flex items-center justify-between" >
-                                                                    <span className='md:text-sm text-xs' >SubTotal:</span>
-                                                                    <span className='md:text-sm text-xs' >R$ {subTotalPriceBag.toFixed(2).replace('.', ',')}</span>
-                                                                </div>
-                                                            }
-                                                            {
-                                                                product.discount != '0' &&
-                                                                <div className="flex items-center justify-between" >
-                                                                    <span className='md:text-sm text-xs' >Descontos:</span>
-                                                                    <span className='md:text-sm text-xs line-through text-[#7E8392]' >R$ {totalDiscountBag.toFixed(2).replace('.', ',')}</span>
-                                                                </div>
-                                                            }
+                                                            <div className="flex items-center justify-between" >
+                                                                <span className='md:text-sm text-xs' >SubTotal:</span>
+                                                                <span className='md:text-sm text-xs' >R$ {subTotalPriceBag.toFixed(2).replace('.', ',')}</span>
+                                                            </div>
+
+                                                            <div className="flex items-center justify-between" >
+                                                                <span className='md:text-sm text-xs' >Descontos:</span>
+                                                                <span className='md:text-sm text-xs line-through text-[#7E8392]' >R$ {totalDiscountBag.toFixed(2).replace('.', ',')}</span>
+                                                            </div>
+
                                                             <div className="flex items-center justify-between" >
                                                                 <span className='md:text-sm text-xs' >Entrega:</span>
                                                                 <>
