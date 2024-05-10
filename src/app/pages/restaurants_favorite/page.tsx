@@ -2,10 +2,16 @@
 //react
 import React from 'react'
 
+//pages
 import Header from '../header'
 import Info_Restaurants from './info-restaurants'
+import PedidosRecomendadosTitle from '../componentes/pedidosRecomendadosTitle'
+
+//context
+import useAppRestaurantsFavorite from '@/app/contexts/restaurants_favorite'
 
 const Page = () => {
+  const { restaurantsFavorite } = useAppRestaurantsFavorite()
 
   return (
     <>
@@ -13,6 +19,13 @@ const Page = () => {
         <div className='mb-5' >
           <Header />
         </div>
+        {
+
+          restaurantsFavorite.length > 1 &&
+          <div>
+            <PedidosRecomendadosTitle title={'Restaurantes Favoritos'} isVerTudo={false} />
+          </div>
+        }
         <div className='flex items-center justify-center gap-2 overflow-x-auto scrollbar-hide'>
           <Info_Restaurants />
         </div>

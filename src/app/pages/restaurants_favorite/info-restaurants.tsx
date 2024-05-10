@@ -12,6 +12,7 @@ const Info_Restaurants = () => {
     return (
         <>
         <div className='flex items-center md:justify-start justify-center flex-wrap gap-3 w-full' >
+
             {
                 restaurantsFavorite.length < 1 &&
                 <div className='my-5 text-center w-full' >

@@ -1,7 +1,8 @@
 'use client'
 
 //react
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 //shadcn
@@ -21,14 +22,17 @@ import { GoChecklist } from 'react-icons/go'
 
 //context Auth
 import { AppContextFirebaseAuth } from '@/app/contexts/providers/auth'
-import Image from 'next/image'
 import Button_SignOut from './componente-menu/button-signOut'
 
 //pages
 
 const Menu = () => {
-
     const { user } = useContext(AppContextFirebaseAuth)
+    const [active, setActive] = useState<string>('')
+
+    useEffect(() => {
+        setActive(window.location.pathname);
+    }, []);
 
     return (
         <>
@@ -65,15 +69,15 @@ const Menu = () => {
                             }
                         </div>
                         <div className='space-y-1 border-b-[1px] border-b-[#b4b6bc] pb-4' >
-                            <Link href='/' className='flex items-center gap-2 rounded-xl p-2' >
+                            <Link href='/' className={`flex items-center gap-2 rounded-xl p-2 ${active == '/' && 'bg-[var(--red)] text-white rounded-xl' }`} >
                                 <span><IoHomeOutline /></span>
                                 <span className='md:text-sm text-xs ' >Ínicio</span>
                             </Link>
-                            <Link href='/pages/meus_pedidos' className='flex items-center gap-2 rounded-xl p-2' >
+                            <Link href='/pages/meus_pedidos' className={`flex items-center gap-2 rounded-xl p-2 ${active == '/pages/meus_pedidos' && 'bg-[var(--red)] text-white rounded-xl' }`} >
                                 <span><GoChecklist /></span>
                                 <span className='md:text-sm text-xs ' >Meus Pedidos</span>
                             </Link>
-                            <Link href='/pages/restaurants_favorite' className='flex items-center gap-2 rounded-xl p-2' >
+                            <Link href='/pages/restaurants_favorite' className={`flex items-center gap-2 rounded-xl p-2 ${active == '/pages/restaurants_favorite' && 'bg-[var(--red)] text-white rounded-xl' }`} >
                                 <span><FaRegHeart /></span>
                                 <span className='md:text-sm text-xs ' >Restaurantes Favoritos</span>
                             </Link>
