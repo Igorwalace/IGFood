@@ -53,7 +53,7 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
     const totalDiscountBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.product.discount / 100 * product.quanty, 0)
     const subTotalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty, 0)
     const totalQuantyBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.quanty), 0);
-    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + (parseFloat(product.product.price) - totalDiscountBag) * product.quanty, 0);
+    const totalPriceBag = productCarrinho.reduce((acc: any, product: any) => acc + parseFloat(product.product.price) * product.quanty - totalDiscountBag , 0);
     setQuantyCurrent(totalQuantyBag)
 
     const handleAddProductCart = () => {
@@ -198,7 +198,7 @@ const Add_Sacola = ({ product, quanty, setQuanty }: Product) => {
                                                                 <div className="flex justify-center flex-col gap-2">
                                                                     <h1 className='md:text-sm text-xs' >{product.product.name}</h1>
                                                                     <div className='flex items-center gap-1' >
-                                                                        <span className="md:text-base text-sm font-extrabold" >R$ {product.totalProductSingle.toFixed(2).replace('.', ',')}</span>
+                                                                        <span className="md:text-base text-sm font-extrabold" >R$ {product.product.price.toFixed(2).replace('.', ',')}</span>
                                                                         {
                                                                             product.product.discount != '0' && <span className="md:text-xs text-[10px] text-[#7E8392] line-through" >R$ {product.subTotalProductSingle.toFixed(2).replace('.', ',')}</span>
                                                                         }
