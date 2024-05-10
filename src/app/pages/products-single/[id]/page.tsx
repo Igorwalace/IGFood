@@ -98,7 +98,7 @@ const Page = ({ params: { id } }: ProductSingle) => {
                                                     </div>
                                                     <div className="flex items-center justify-between gap-1" >
                                                         <button className="p-2 border-[0.5px] border-[#b8babf] rounded-lg" onClick={handleAnyLessQuanty} ><IoRemoveOutline /></button>
-                                                        <span className='w-2 text-center' >{quanty}</span>
+                                                        <span className='w-8 text-center' >{quanty}</span>
                                                         <button className="p-2 border-[1px] border-[#b8babfs] rounded-lg bg-[var(--red)]" onClick={handleMoreQuanty} ><IoAddOutline /></button>
                                                     </div>
                                                 </div>
