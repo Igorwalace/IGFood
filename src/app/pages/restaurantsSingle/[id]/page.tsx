@@ -4,6 +4,7 @@
 import Header from '../../header'
 import DeliveryTime_And_DeliveyFree from '../../componentes/deliveryFreeAndDelivery-timer'
 import Button_Back from '../../componentes/button-back'
+import AllProducts from '../../componentes/allProducts'
 
 //react
 import React from 'react'
@@ -12,7 +13,6 @@ import Image from 'next/image'
 //context
 import useAppContextFirestore from '@/app/contexts/banco'
 import PedidosRecomendadosTitle from '../../componentes/pedidosRecomendadosTitle'
-import AllProducts from '../../componentes/allProducts'
 
 interface RestaurantPage {
   params: {
@@ -78,7 +78,7 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                 {/* products recomendados */}
                 <div className='md:my-5 md:p-0 px-5' >
                   <>
-                    <PedidosRecomendadosTitle title={'Da casa'} isVerTudo={false} />
+                    <PedidosRecomendadosTitle title={'Pratos da casa'} isVerTudo={false} />
                   </>
                   <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' >
                     {
@@ -94,11 +94,11 @@ const Page = ({ params: { id } }: RestaurantPage) => {
                   </div>
                   {
                     firestoreProducts
-                    .filter((filter:any) => filter.restaurantId == id)
-                    .find((product:any) => product.category == 'bebida' )
+                      .filter((filter: any) => filter.restaurantId == id)
+                      .find((product: any) => product.category == 'bebida')
                     &&
 
-                      <div className='my-5' >
+                    <div className='my-5' >
                       <>
                         <PedidosRecomendadosTitle title={'Bebidas'} isVerTudo={false} />
                       </>

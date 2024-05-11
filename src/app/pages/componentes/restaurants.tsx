@@ -16,8 +16,8 @@ const Restaurants = () => {
 
     return (
         <>
-            <main className='relative duration-1000' >
-                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide relative' id='my-scrollable-element' >
+            <main>
+                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide relative' id='my-scrollable-element-restaurant' >
                     {
                         firestoreRestaurant.length < 1 &&
                         oneToSix.slice(0, 6).map((product: any, index: any) => (

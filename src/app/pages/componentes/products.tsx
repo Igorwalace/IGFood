@@ -14,10 +14,12 @@ const Products = () => {
     return (
         <>
             <main>
-                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide'>
+                <div className='flex items-center gap-2 overflow-x-auto scrollbar-hide' id='my-scrollable-element-product' >
                     {
                         firestoreProducts.length < 1 &&
-                        oneToSix.slice(0, 6).map((product: any, index: any) => (
+                        oneToSix
+                        .slice(0, 6)
+                        .map((product: any, index: any) => (
                             <div
                                 className='flex flex-col items-center justify-center gap-2'
                                 key={index}
@@ -30,7 +32,8 @@ const Products = () => {
                     }
                     {firestoreProducts
                         .filter((product: any) => product.discount != 0)
-                        .slice(0, 6)
+                        .sort((a:any, b:any) => Math.random() - 0.5)
+                        .slice(0,7)
                         .map((product: any, index: any) => (
                             <div key={index} >
                                 <AllProducts product={product} index={index} firestoreRestaurant={firestoreRestaurant} />

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 
@@ -13,9 +14,9 @@ const PedidosRecomendadosTitle = ({ title, isVerTudo }: title) => {
                 <h1 className='text-[#323232] md:text-lg text-base first-letter:capitalize' >{title}</h1>
                 {
                     isVerTudo &&
-                    <span className='text-[var(--red)] md:text-sm text-xs font-medium cursor-pointer flex items-center justify-center gap-2' >Ver Todos
+                    <Link href='/pages/todosOsProdutos' className='text-[var(--red)] md:text-sm text-xs font-medium cursor-pointer flex items-center justify-center gap-2' >Ver Todos
                         <span><IoIosArrowForward /></span>
-                    </span>
+                    </Link>
                 }
             </div>
         </>
