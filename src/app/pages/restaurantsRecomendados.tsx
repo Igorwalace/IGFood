@@ -7,12 +7,11 @@ import PedidosRecomendadosTitle from './componentes/pedidosRecomendadosTitle'
 import ArrowBackAndArrowForward from './componentes/arrowBackAndArrowForward'
 
 //context
+import useAppContextFirestore from '../contexts/banco'
 
 //icons
 
 const RestaurantsRecomendados = () => {
-<<<<<<< HEAD
-=======
     const { firestoreRestaurant } = useAppContextFirestore()
 
 
@@ -61,7 +60,6 @@ const RestaurantsRecomendados = () => {
         // Initiate the animation
         animateScroll();
     };
->>>>>>> 9dbfce7956d7f75339d426c0ee0d6159dd1f95b5
     return (
         <>
             <main>
@@ -70,7 +68,7 @@ const RestaurantsRecomendados = () => {
                 </div>
                 <div className='relative' >
                     <Restaurants />
-                    <ArrowBackAndArrowForward  dinamicId={"my-scrollable-element-restaurant"}  />
+                    <ArrowBackAndArrowForward dinamicId={"my-scrollable-element-restaurant"} />
                 </div>
             </main>
         </>
