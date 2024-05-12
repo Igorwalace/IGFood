@@ -10,6 +10,7 @@ import BannerMain from './bannerMain';
 import BannerLanchesMain from './componentes/bannerLachensMain';
 import PedidosRecomendados from './pedidosRemendados';
 import RestaurantsRecomendados from './restaurantsRecomendados';
+import Footer from './footer';
 
 const Home = () => {
 
@@ -38,6 +39,9 @@ const Home = () => {
             </div>
             <div className='md:px-[128px] p-5 md:py-5 py-3' >
                 <RestaurantsRecomendados />
+            </div>
+            <div className='md:px-[128px] px-5' >
+                <Footer />
             </div>
         </>
     )
