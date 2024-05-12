@@ -64,7 +64,7 @@ const RestaurantsRecomendados = () => {
         <>
             <main>
                 <div>
-                    <PedidosRecomendadosTitle title={'Restaurantes Recomendados'} isVerTudo={true} />
+                    <PedidosRecomendadosTitle title={'Restaurantes Recomendados'} isVerTudo={false}/>
                 </div>
                 <div className='relative' >
                     <Restaurants />
